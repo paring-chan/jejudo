@@ -1,0 +1,36 @@
+{
+  "name": "jejudo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "파링 <parangee9706@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.7.0",
+    "tsup": "^5.11.11",
+    "typescript": "^4.5.5"
+  },
+  "peerDependencies": {
+    "discord.js": "^13.6.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@types/node": "^17.0.12",
+    "discord.js": "^13.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.1",
+    "prettier": "^2.5.1"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "lint-staged",
+    "build": "tsup"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --cache --fix"
+  }
+}
