@@ -1,12 +1,15 @@
 {
   "name": "jejudo",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.0-alpha",
+  "main": "dist/api.js",
+  "types": "dist/api.d.ts",
   "author": "파링 <parangee9706@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@discordjs/builders": "^0.12.0",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
+    "dedent": "^0.7.0",
     "eslint": "^8.7.0",
     "tsup": "^5.11.11",
     "typescript": "^4.5.5"
@@ -17,6 +20,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
+    "@types/dedent": "^0.7.0",
     "@types/node": "^17.0.12",
     "discord.js": "^13.6.0",
     "eslint-config-prettier": "^8.3.0",
