@@ -107,7 +107,7 @@ export class EvaluateCommand extends JejudoCommand {
       const collector = channel.createMessageComponentCollector({
         componentType: MessageComponentTypes.BUTTON,
         filter: (j) => j.user.id === i.user.id && j.message.id === r.id,
-        time: 1000 * 60 * 30,
+        time: 1000 * 60 * 60 * 10,
       })
       collector.on('collect', async (i) => {
         await i.deferUpdate()

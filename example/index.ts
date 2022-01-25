@@ -4,7 +4,7 @@ import { Jejudo } from '../src'
 
 const client = new Client({ intents: ['GUILD_MESSAGES', 'DIRECT_MESSAGES'] })
 
-const jejudo = new Jejudo(client)
+const jejudo = new Jejudo(client, ['544112328249966592'])
 
 client.once('ready', async () => {
   const owner = (await client.application?.fetch())?.owner

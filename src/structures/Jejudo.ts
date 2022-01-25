@@ -6,6 +6,7 @@ import {
 import { JejudoCommand } from './JejudoCommand'
 import { EvaluateCommand } from '../commands'
 import { SummaryCommand } from '../commands/Summary'
+import { ShellCommand } from '../commands/Shell'
 
 export class Jejudo {
   private _commands: JejudoCommand[] = []
@@ -15,6 +16,7 @@ export class Jejudo {
   constructor(public client: Client, public owners: string[] = []) {
     this.registerCommand(new SummaryCommand(this))
     this.registerCommand(new EvaluateCommand(this))
+    this.registerCommand(new ShellCommand(this))
   }
 
   registerCommand(command: JejudoCommand) {
