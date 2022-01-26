@@ -68,7 +68,7 @@ export class ShellCommand extends JejudoCommand {
           new MessageButton()
             .setStyle('DANGER')
             .setCustomId('jejudo_stop')
-            .setLabel('KILL')
+            .setLabel('Stop')
         ),
       ],
     })
@@ -97,6 +97,7 @@ export class ShellCommand extends JejudoCommand {
       pty.kill()
       await i.editReply({
         components: [],
+        content: codeBlock(getContent()),
       })
 
       messageCollector.stop()
@@ -104,8 +105,9 @@ export class ShellCommand extends JejudoCommand {
 
     const messageCollector = channel.createMessageCollector({
       time: 1000 * 60 * 60 * 10,
-      filter: (m) =>
-        m.author.id === i.user.id && m.reference?.messageId === r.id,
+      filter: (m) => {
+        return m.author.id === i.user.id && m.reference?.messageId === r.id
+      },
     })
 
     messageCollector.on('collect', (msg) => {
