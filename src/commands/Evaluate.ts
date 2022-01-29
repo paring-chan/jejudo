@@ -5,7 +5,6 @@
 import { Jejudo, JejudoCommand } from '../structures'
 import {
   CommandInteraction,
-  Message,
   MessageActionRow,
   MessageButton,
   TextChannel,
@@ -50,7 +49,11 @@ export class EvaluateCommand extends JejudoCommand {
               maxArrayLength: 200,
               depth: 2,
             })
-      ).split('\n')
+      )
+        .split('\n')
+        .map((x) =>
+          x.split(this.jejudo.client.token as string).join('[secret]')
+        )
       if (typeof result === 'string') {
         await i.editReply({ content: lines[0] })
         return
