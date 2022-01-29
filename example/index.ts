@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 pikokr. Licensed under the MIT license
+ */
+
 import { Client, Team, User } from 'discord.js'
 import { config } from './config'
 import { Jejudo } from '../src'

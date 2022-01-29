@@ -1,4 +1,8 @@
 #!/bin/sh
+#
+# Copyright (c) 2022 pikokr. Licensed under the MIT license
+#
+
 . "$(dirname "$0")/_/husky.sh"
 
 yarn commitlint --edit $1
