@@ -5,6 +5,7 @@
 import {
   ApplicationCommandDataResolvable,
   Client,
+  CommandInteraction,
   Interaction,
 } from 'discord.js'
 import { JejudoCommand } from './JejudoCommand'
@@ -25,9 +26,32 @@ export class Jejudo {
   private _commands: JejudoCommand[] = []
   documentationSources: DocumentationSource[] = []
 
-  commandName = 'jejudo'
+  commandName: string
 
-  constructor(public client: Client, public owners: string[] = []) {
+  owners: string[]
+
+  noPermission: (i: CommandInteraction) => void
+
+  isOwner: (i: Interaction) => boolean | Promise<boolean>
+
+  constructor(
+    public client: Client,
+    {
+      owners = [],
+      command = 'jejudo',
+      noPermission = (i) => i.reply('No permission'),
+      isOwner = () => false,
+    }: {
+      owners?: string[]
+      command?: string
+      noPermission?: (i: CommandInteraction) => void
+      isOwner?: (i: Interaction) => boolean | Promise<boolean>
+    }
+  ) {
+    this.owners = owners
+    this.commandName = command
+    this.noPermission = noPermission
+    this.isOwner = isOwner
     this.registerCommand(new SummaryCommand(this))
     this.registerCommand(new EvaluateCommand(this))
     this.registerCommand(new ShellCommand(this))
@@ -81,7 +105,14 @@ export class Jejudo {
     if (!i.isCommand() && !i.isAutocomplete()) return
     if (i.commandName !== this.commandName) return
     if (i.isAutocomplete()) {
-      if (!this.owners.includes(i.user.id)) return
+      if (!this.owners.includes(i.user.id)) {
+        if (!(await this.isOwner(i))) {
+          if (i.isCommand()) {
+            return this.noPermission(i)
+          }
+          return
+        }
+      }
       const options = i.options
       const sc = options.getSubcommand(true)
       const command = this._commands.find((x) => x.data.name === sc)

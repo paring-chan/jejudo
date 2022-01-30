@@ -11,7 +11,7 @@ const client = new Client({
   partials: ['CHANNEL', 'MESSAGE'],
 })
 
-const jejudo = new Jejudo(client, [])
+const jejudo = new Jejudo(client, { owners: [] })
 
 client.once('ready', async () => {
   const owner = (await client.application?.fetch())?.owner
