@@ -3,3 +3,6 @@
  */
 
 export * from './Evaluate'
+export * from './Summary'
+export * from './Shell'
+export * from './Docs'
