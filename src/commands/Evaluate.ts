@@ -11,7 +11,6 @@ import {
 } from 'discord.js'
 import { codeBlock } from '@discordjs/builders'
 import * as util from 'util'
-import { MessageComponentTypes } from 'discord.js/typings/enums'
 
 export class EvaluateCommand extends JejudoCommand {
   constructor(public jejudo: Jejudo) {
@@ -111,7 +110,7 @@ export class EvaluateCommand extends JejudoCommand {
       await update()
 
       const collector = channel.createMessageComponentCollector({
-        componentType: MessageComponentTypes.BUTTON,
+        componentType: 'BUTTON',
         filter: (j) => j.user.id === i.user.id && j.message.id === r.id,
         time: 1000 * 60 * 60 * 10,
       })
