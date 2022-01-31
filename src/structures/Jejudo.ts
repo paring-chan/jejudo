@@ -15,6 +15,7 @@ import {
   SummaryCommand,
   ShellCommand,
 } from '../commands'
+import { version } from '../constants'
 
 type DocumentationSource = {
   name: string
@@ -94,6 +95,13 @@ export class Jejudo {
       key: 'djs-rest',
       name: 'Discord.JS REST',
       url: 'https://github.com/discordjs/docs/raw/main/voice/stable.json',
+    })
+    this.addDocumentationSource({
+      key: 'jejudo',
+      name: 'Jejudo',
+      url: `https://github.com/pikokr/docs/raw/main/jejudo/${
+        version.includes('dev') ? 'dev' : 'stable'
+      }.json`,
     })
   }
 

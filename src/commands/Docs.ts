@@ -21,7 +21,7 @@ export class DocsCommand extends JejudoCommand {
           type: 'STRING',
           name: 'source',
           description: 'source for docs',
-          required: true,
+          required: false,
           autocomplete: true,
         },
         {
@@ -52,7 +52,9 @@ export class DocsCommand extends JejudoCommand {
       )
     } else if (focused.name === 'keyword') {
       const source = this.jejudo.documentationSources.find(
-        (x) => x.key === i.options.getString('source')
+        (x) =>
+          x.key ===
+          (i.options.getString('source') ?? this.jejudo.defaultDocsSource)
       )
       if (!source) return i.respond([])
 
@@ -76,7 +78,8 @@ export class DocsCommand extends JejudoCommand {
   async execute(i: CommandInteraction): Promise<void> {
     const source = this.jejudo.documentationSources.find(
       (x) =>
-        x.key === i.options.getString('source') ?? this.jejudo.defaultDocsSource
+        x.key ===
+        (i.options.getString('source') ?? this.jejudo.defaultDocsSource)
     )
     if (!source) return i.reply('Unknown documentation source')
 

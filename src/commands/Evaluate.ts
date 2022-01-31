@@ -93,11 +93,12 @@ export class EvaluateCommand extends JejudoCommand {
       const pageButton = new MessageButton()
         .setCustomId('jejudo_page')
         .setStyle('PRIMARY')
+        .setDisabled(true)
 
       const generateButtons = (pageString: string): MessageButton[] => [
-        prevButton,
+        prevButton.setDisabled(currentPage === 1),
         pageButton.setLabel(pageString),
-        nextButton,
+        nextButton.setDisabled(currentPage === chunks.length),
         stopButton,
       ]
 
@@ -106,11 +107,16 @@ export class EvaluateCommand extends JejudoCommand {
         content: codeBlock('js', chunks[0]),
       })
 
-      const update = () =>
+      const update = (stop = false) =>
         i.editReply({
           components: [
             new MessageActionRow().addComponents(
-              generateButtons(`${currentPage} / ${chunks.length}`)
+              generateButtons(`${currentPage} / ${chunks.length}`).map((x) => {
+                if (stop) {
+                  x.setDisabled(true)
+                }
+                return x
+              })
             ),
           ],
           content: codeBlock('js', chunks[currentPage - 1]),
@@ -141,11 +147,7 @@ export class EvaluateCommand extends JejudoCommand {
         }
       })
       collector.on('end', async () => {
-        await prevButton.setDisabled(true)
-        await nextButton.setDisabled(true)
-        await pageButton.setDisabled(true)
-        await stopButton.setDisabled(true)
-        await update()
+        await update(true)
       })
     } catch (e) {
       await i.editReply(`Error\n${codeBlock('js', `${e}`)}`)
