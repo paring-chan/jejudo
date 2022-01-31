@@ -37,7 +37,8 @@
   "scripts": {
     "prepare": "husky install",
     "lint": "lint-staged",
-    "build": "tsup-node"
+    "build": "tsup-node",
+    "prepack": "yarn build"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --cache --fix"
