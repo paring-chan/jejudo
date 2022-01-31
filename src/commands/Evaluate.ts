@@ -34,7 +34,7 @@ export class EvaluateCommand extends JejudoCommand {
       (await this.jejudo.client.channels.fetch(i.channelId))) as TextChannel
 
     const r = await i.deferReply({ fetchReply: true })
-    const code = `return ${i.options.getString('code', true)}`
+    const code = i.options.getString('code', true)
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const client = this.jejudo.client
