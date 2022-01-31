@@ -50,9 +50,16 @@ export class EvaluateCommand extends JejudoCommand {
             })
       )
         .split('\n')
-        .map((x) =>
-          x.split(this.jejudo.client.token as string).join('[secret]')
-        )
+        .map((x) => {
+          let res = x
+          for (const secret of [
+            ...this.jejudo.secrets,
+            this.jejudo.client.token as string,
+          ]) {
+            res = x.split(secret).join('[secret]')
+          }
+          return res
+        })
       if (typeof result === 'string') {
         await i.editReply({ content: lines[0] })
         return

@@ -36,6 +36,8 @@ export class Jejudo {
 
   isOwner: (i: Interaction) => boolean | Promise<boolean>
 
+  secrets: string[]
+
   constructor(
     public client: Client,
     {
@@ -43,17 +45,25 @@ export class Jejudo {
       command = 'jejudo',
       noPermission = (i) => i.reply('No permission'),
       isOwner = () => false,
+      globalVariables = {},
+      secrets = [],
     }: {
       owners?: string[]
       command?: string
       noPermission?: (i: CommandInteraction) => void
       isOwner?: (i: Interaction) => boolean | Promise<boolean>
+      globalVariables?: Record<string, object>
+      secrets?: string[]
     }
   ) {
     this.owners = owners
     this.commandName = command
     this.noPermission = noPermission
     this.isOwner = isOwner
+    this.secrets = secrets
+    for (const [k, v] of Object.entries(globalVariables)) {
+      ;(global as unknown as Record<string, object>)[k] = v
+    }
     this.registerCommand(new SummaryCommand(this))
     this.registerCommand(new EvaluateCommand(this))
     this.registerCommand(new ShellCommand(this))
