@@ -2,7 +2,7 @@ name: Documentation
 on:
   push:
     branches:
-      - 'main'
+      - 'stable'
       - 'dev'
       - '!docs'
     tags:
