@@ -19,16 +19,16 @@ export class DocsCommand extends JejudoCommand {
       options: [
         {
           type: 'STRING',
-          name: 'source',
-          description: 'source for docs',
-          required: false,
+          name: 'keyword',
+          description: 'keyword for docs',
+          required: true,
           autocomplete: true,
         },
         {
           type: 'STRING',
-          name: 'keyword',
-          description: 'keyword for docs',
-          required: true,
+          name: 'source',
+          description: 'source for docs',
+          required: false,
           autocomplete: true,
         },
       ],
