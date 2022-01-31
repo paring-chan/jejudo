@@ -26,6 +26,8 @@ export class Jejudo {
   private _commands: JejudoCommand[] = []
   documentationSources: DocumentationSource[] = []
 
+  defaultPermission = false
+
   commandName: string
 
   owners: string[]
@@ -92,7 +94,7 @@ export class Jejudo {
       type: 'CHAT_INPUT',
       name: this.commandName,
       description: 'Jejudo debugging tool',
-      defaultPermission: false,
+      defaultPermission: this.defaultPermission,
       options: this._commands.map((x) => x.data),
     }
   }
@@ -104,15 +106,14 @@ export class Jejudo {
   async run(i: Interaction) {
     if (!i.isCommand() && !i.isAutocomplete()) return
     if (i.commandName !== this.commandName) return
-    if (i.isAutocomplete()) {
-      if (!this.owners.includes(i.user.id)) {
-        if (!(await this.isOwner(i))) {
-          if (i.isCommand()) {
-            return this.noPermission(i)
-          }
-          return
+    if (!this.owners.includes(i.user.id)) {
+      if (!(await this.isOwner(i))) {
+        if (i.isCommand()) {
+          return this.noPermission(i)
         }
       }
+    }
+    if (i.isAutocomplete()) {
       const options = i.options
       const sc = options.getSubcommand(true)
       const command = this._commands.find((x) => x.data.name === sc)
@@ -120,8 +121,6 @@ export class Jejudo {
       await command.autocomplete(i)
       return
     }
-    if (!this.owners.includes(i.user.id))
-      return i.reply({ content: 'No permission', ephemeral: true })
     const subCommand = i.options.getSubcommand(true)
     const command = this._commands.find((x) => x.data.name === subCommand)
     if (!command)

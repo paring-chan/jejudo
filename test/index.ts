@@ -11,30 +11,26 @@ const client = new Client({
   partials: ['CHANNEL', 'MESSAGE'],
 })
 
-const jejudo = new Jejudo(client, { owners: [] })
+const jejudo = new Jejudo(client, {
+  isOwner: (i) => owners.includes(i.user.id),
+})
+
+jejudo.defaultPermission = true
+
+let owners: string[] = []
 
 client.once('ready', async () => {
   const owner = (await client.application?.fetch())?.owner
 
   if (owner instanceof Team) {
-    jejudo.owners = owner.members.map((x) => x.id)
+    owners = owner.members.map((x) => x.id)
   } else if (owner instanceof User) {
-    jejudo.owners = [owner.id]
+    owners = [owner.id]
   }
 
   await client.guilds.cache
     .get(config.commandGuild)
     ?.commands.set([jejudo.commandJSON])
-  await client.guilds.cache
-    .get(config.commandGuild)
-    ?.commands.cache.find((x) => x.name === 'jejudo')
-    ?.permissions.set({
-      permissions: jejudo.owners.map((x) => ({
-        type: 'USER',
-        id: x,
-        permission: true,
-      })),
-    })
   console.log('ready')
 })
 
