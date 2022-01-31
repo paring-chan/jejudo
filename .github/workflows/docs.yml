@@ -12,10 +12,6 @@ jobs:
     name: Build documentation
     runs-on: ubuntu-latest
     if: github.repository_owner == 'pikokr'
-    outputs:
-      BRANCH_NAME: ${{ steps.env.outputs.BRANCH_NAME }}
-      BRANCH_OR_TAG: ${{ steps.env.outputs.BRANCH_OR_TAG }}
-      SHA: ${{ steps.env.outputs.SHA }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -37,10 +33,3 @@ jobs:
         with:
           name: docs
           path: docs/docs.json
-
-      - name: Set outputs for upload job
-        id: env
-        run: |
-          echo "::set-output name=BRANCH_NAME::${GITHUB_REF_NAME}"
-          echo "::set-output name=BRANCH_OR_TAG::${GITHUB_REF_TYPE}"
-          echo "::set-output name=SHA::${GITHUB_SHA}"
