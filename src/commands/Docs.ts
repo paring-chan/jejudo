@@ -75,7 +75,8 @@ export class DocsCommand extends JejudoCommand {
 
   async execute(i: CommandInteraction): Promise<void> {
     const source = this.jejudo.documentationSources.find(
-      (x) => x.key === i.options.getString('source', true)
+      (x) =>
+        x.key === i.options.getString('source') ?? this.jejudo.defaultDocsSource
     )
     if (!source) return i.reply('Unknown documentation source')
 

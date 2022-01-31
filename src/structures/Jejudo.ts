@@ -26,6 +26,8 @@ export class Jejudo {
   private _commands: JejudoCommand[] = []
   documentationSources: DocumentationSource[] = []
 
+  defaultDocsSource = 'djs'
+
   defaultPermission = false
 
   commandName: string
