@@ -1,5 +1,5 @@
 /dist
 /.idea
 /node_modules
-/example/config.ts
+/test/config.ts
 /.eslintcache
