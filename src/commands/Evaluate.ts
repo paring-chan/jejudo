@@ -126,12 +126,12 @@ export class EvaluateCommand extends JejudoCommand {
         await i.deferUpdate()
         switch (i.customId) {
           case 'jejudo_nextPage':
-            if (currentPage === chunks.length) return i.deferUpdate()
+            if (currentPage === chunks.length) return
             currentPage += 1
             await update()
             break
           case 'jejudo_prevPage':
-            if (currentPage === 1) return i.deferUpdate()
+            if (currentPage === 1) return
             currentPage -= 1
             await update()
             break
