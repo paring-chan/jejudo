@@ -36,10 +36,11 @@ export class EvaluateCommand extends JejudoCommand {
     const r = await i.deferReply({ fetchReply: true })
     const code = `return ${i.options.getString('code', true)}`
 
-    try {
-      const evaluate = new Function('i, client', code)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const client = this.jejudo.client
 
-      const result = await evaluate(i, this.jejudo.client)
+    try {
+      const result = await eval(code)
       const lines = (
         typeof result === 'string'
           ? result
