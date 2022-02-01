@@ -97,7 +97,13 @@ export class ShellCommand extends JejudoCommand {
 
     buttonCollector.on('end', async () => {
       clearInterval(interval)
+
+      console.log(`kill ${pty.pid}`)
+
       pty.kill()
+
+      console.log(`killed ${pty.pid}`)
+
       await i.editReply({
         components: [],
         content: codeBlock(getContent()),
