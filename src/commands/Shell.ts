@@ -12,7 +12,6 @@ import {
 import { spawn } from 'node-pty'
 import { Terminal } from 'xterm-headless'
 import { codeBlock } from '@discordjs/builders'
-import cp from 'child_process'
 
 export class ShellCommand extends JejudoCommand {
   constructor(private jejudo: Jejudo) {
@@ -108,7 +107,7 @@ export class ShellCommand extends JejudoCommand {
 
       console.log(`kill ${pty.pid}`)
 
-      pty.kill()
+      process.kill(pty.pid)
 
       console.log(`killed ${pty.pid}`)
 
