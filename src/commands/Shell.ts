@@ -12,6 +12,7 @@ import {
 import { spawn } from 'node-pty'
 import { Terminal } from 'xterm-headless'
 import { codeBlock } from '@discordjs/builders'
+import cp from 'child_process'
 
 export class ShellCommand extends JejudoCommand {
   constructor(private jejudo: Jejudo) {
@@ -31,24 +32,31 @@ export class ShellCommand extends JejudoCommand {
   }
 
   async execute(i: CommandInteraction): Promise<void> {
-    if (!process.env.SHELL)
-      return i.reply('environment variable SHELL not found.')
     const channel = (i.channel ??
       this.jejudo.client.channels.cache.get(i.channelId) ??
       (await this.jejudo.client.channels.fetch(i.channelId))) as TextChannel
     const r = await i.deferReply({ fetchReply: true })
-    const shell = process.env.SHELL
+    const shell =
+      process.env.SHELL || (process.platform === 'win32' ? 'powershell' : null)
+    if (!shell) return i.reply('environment variable `SHELL` not found.')
+    const command = i.options.getString('command', true)
     const pty = spawn(shell, [], {
-      name: 'exec terminal',
-      cols: 80,
       rows: 24,
+      cols: 80,
     })
-    const term = new Terminal()
+    const term = new Terminal({
+      rows: 24,
+      cols: 80,
+    })
     pty.onData((e) => {
       term.write(e)
     })
 
-    pty.write(i.options.getString('command', true) + '\n')
+    pty.onExit(() => {
+      buttonCollector.stop()
+    })
+
+    pty.write(`${command}\n`)
 
     const getContent = () => {
       const lines: string[] = []
