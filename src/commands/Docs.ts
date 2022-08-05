@@ -31,7 +31,10 @@ export class DocsCommand extends JejudoCommand {
           name: 'source',
           description: 'source for docs',
           required: false,
-          autocomplete: true,
+          choices: jejudo.documentationSources.map((x) => ({
+            name: x.name,
+            value: x.key,
+          })),
         },
       ],
     })
@@ -39,20 +42,7 @@ export class DocsCommand extends JejudoCommand {
 
   async autocomplete(i: AutocompleteInteraction): Promise<void> {
     const focused = i.options.getFocused(true)
-    if (focused.name === 'source') {
-      return i.respond(
-        this.jejudo.documentationSources
-          .filter((x) =>
-            x.name
-              .toLowerCase()
-              .includes((focused.value as string).toLowerCase())
-          )
-          .map((x) => ({
-            name: x.name,
-            value: x.key,
-          }))
-      )
-    } else if (focused.name === 'keyword') {
+    if (focused.name === 'keyword') {
       const source = this.jejudo.documentationSources.find(
         (x) =>
           x.key ===
