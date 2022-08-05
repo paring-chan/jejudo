@@ -160,7 +160,7 @@ export class Jejudo {
 
     if (!name) return
 
-    if (!this.textCommandName.find((x) => x !== name)) return
+    if (!this.textCommandName.find((x) => x === name)) return
 
     const commandName = split.shift() ?? 'summary'
 
