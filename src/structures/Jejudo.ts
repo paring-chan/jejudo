@@ -133,7 +133,7 @@ export class Jejudo {
       type: ApplicationCommandType.ChatInput,
       name: this.commandName,
       description: 'Jejudo debugging tool',
-      defaultMemberPermissions: this.defaultMemberPermissions,
+      defaultMemberPermissions: this.defaultMemberPermissions || null,
       options: this._commands.map((x) => x.data),
     }
   }
