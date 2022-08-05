@@ -92,22 +92,22 @@ export class Jejudo {
     this.addDocumentationSource({
       key: 'djs-collection',
       name: 'Discord.JS Collection',
-      url: 'https://raw.githubusercontent.com/discordjs/docs/main/collection/stable.json',
+      url: 'https://raw.githubusercontent.com/discordjs/docs/main/collection/main.json',
     })
     this.addDocumentationSource({
       key: 'djs-voice',
       name: 'Discord.JS Voice',
-      url: 'https://raw.githubusercontent.com/discordjs/docs/main/voice/stable.json',
+      url: 'https://raw.githubusercontent.com/discordjs/docs/main/voice/main.json',
     })
     this.addDocumentationSource({
       key: 'djs-builders',
       name: 'Discord.JS Builders',
-      url: 'https://raw.githubusercontent.com/discordjs/docs/main/builders/stable.json',
+      url: 'https://raw.githubusercontent.com/discordjs/docs/main/builders/main.json',
     })
     this.addDocumentationSource({
       key: 'djs-rest',
       name: 'Discord.JS REST',
-      url: 'https://github.com/discordjs/docs/raw/main/voice/stable.json',
+      url: 'https://github.com/discordjs/docs/raw/main/voice/main.json',
     })
     this.addDocumentationSource({
       key: 'jejudo',
