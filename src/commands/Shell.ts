@@ -157,10 +157,9 @@ export class ShellCommand extends JejudoCommand {
 
       pty.write(`${value}${separator}`)
 
-      j.reply({
-        content: 'sent!',
-        ephemeral: true,
-      })
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      await j.deferUpdate()
     })
 
     buttonCollector.on('collect', async (i) => {
