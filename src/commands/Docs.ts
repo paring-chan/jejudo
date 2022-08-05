@@ -8,8 +8,11 @@ import {
   AutocompleteInteraction,
   ChatInputCommandInteraction,
   EmbedBuilder,
+  Message,
+  TextBasedChannel,
 } from 'discord.js'
 import Doc from 'discord.js-docs'
+import yargs from 'yargs'
 
 export class DocsCommand extends JejudoCommand {
   constructor(public jejudo: Jejudo) {
@@ -76,23 +79,31 @@ export class DocsCommand extends JejudoCommand {
     }
   }
 
-  async execute(i: ChatInputCommandInteraction): Promise<void> {
+  async execute(msg: Message, args: string): Promise<void> {
+    const channel = msg.channel
+    const parsedArgs = await yargs.parseAsync(args)
+
+    console.log(parsedArgs)
+
+    if (!parsedArgs._.length) {
+      await channel.send('Keyword is missing')
+      return
+    }
+
     const source = this.jejudo.documentationSources.find(
-      (x) =>
-        x.key ===
-        (i.options.getString('source') ?? this.jejudo.defaultDocsSource)
+      (x) => x.key === (parsedArgs.source ?? this.jejudo.defaultDocsSource)
     )
     if (!source) {
-      await i.reply('Unknown documentation source')
+      await msg.edit('Unknown documentation source')
       return
     }
 
     const doc = await Doc.fetch(source.url)
 
-    const embed = await doc.resolveEmbed(i.options.getString('keyword', true))
+    const embed = await doc.resolveEmbed(parsedArgs._.join(' '))
 
     if (!embed) {
-      await i.reply({ content: 'No search results found' })
+      await msg.edit({ content: 'No search results found' })
       return
     }
 
@@ -103,7 +114,7 @@ export class DocsCommand extends JejudoCommand {
       }
     })
 
-    await i.reply({
+    await channel.send({
       embeds: [e],
     })
   }

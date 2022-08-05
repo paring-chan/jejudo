@@ -6,9 +6,7 @@ import { Jejudo, JejudoCommand } from '../structures'
 import {
   ActionRowBuilder,
   ButtonBuilder,
-  TextChannel,
   ApplicationCommandOptionType,
-  ChatInputCommandInteraction,
   ButtonStyle,
   MessageActionRowComponentBuilder,
   ComponentType,
@@ -19,6 +17,9 @@ import {
   TextInputStyle,
   InteractionType,
   ModalSubmitInteraction,
+  TextBasedChannel,
+  User,
+  Message,
 } from 'discord.js'
 import { spawn } from 'node-pty'
 import { Terminal } from 'xterm-headless'
@@ -41,19 +42,16 @@ export class ShellCommand extends JejudoCommand {
     })
   }
 
-  async execute(i: ChatInputCommandInteraction): Promise<void> {
-    const channel = (i.channel ??
-      this.jejudo.client.channels.cache.get(i.channelId) ??
-      (await this.jejudo.client.channels.fetch(i.channelId))) as TextChannel
-    const r = await i.deferReply({ fetchReply: true })
+  async execute(msg: Message, command: string, author: User): Promise<void> {
+    const r = msg
+    const channel = msg.channel
     const shell =
       process.env.SHELL || (process.platform === 'win32' ? 'cmd.exe' : null)
     if (!shell) {
-      await i.reply('environment variable `SHELL` not found.')
+      await r.edit('environment variable `SHELL` not found.')
       return
     }
     const separator = process.platform === 'win32' ? '\r\n' : '\n'
-    const command = i.options.getString('command', true)
     const pty = spawn(shell, [], {
       rows: 24,
       cols: 80,
@@ -62,8 +60,12 @@ export class ShellCommand extends JejudoCommand {
       rows: 24,
       cols: 80,
     })
+
+    let shouldUpdate = false
+
     pty.onData((e) => {
       term.write(e)
+      shouldUpdate = true
     })
 
     pty.onExit(() => {
@@ -88,24 +90,31 @@ export class ShellCommand extends JejudoCommand {
       return lines.join('\n')
     }
 
-    await i.editReply({
+    const buttons = [
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Danger)
+        .setCustomId('jejudo_stop')
+        .setLabel('Stop'),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Primary)
+        .setCustomId('jejudo_exec_input')
+        .setLabel('Send input'),
+    ]
+
+    await r.edit({
       content: codeBlock(getContent()),
       components: [
         new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
-          new ButtonBuilder()
-            .setStyle(ButtonStyle.Danger)
-            .setCustomId('jejudo_stop')
-            .setLabel('Stop'),
-          new ButtonBuilder()
-            .setStyle(ButtonStyle.Primary)
-            .setCustomId('jejudo_exec_input')
-            .setLabel('Send input')
+          ...buttons
         ),
       ],
     })
 
     const interval = setInterval(async () => {
-      await i.editReply(codeBlock(getContent()))
+      if (shouldUpdate) {
+        shouldUpdate = false
+        await r.edit(codeBlock(getContent()))
+      }
     }, 1000)
 
     const modalId = `jejudo_exec_modal_${r.id}`
@@ -126,7 +135,7 @@ export class ShellCommand extends JejudoCommand {
     const buttonCollector = channel.createMessageComponentCollector({
       time: 1000 * 60 * 60 * 10,
       filter: async (j) => {
-        const match = j.message.id === r.id && i.user.id === j.user.id
+        const match = j.message.id === r.id && author.id === j.user.id
 
         if (!match) await j.deferUpdate()
 
@@ -135,9 +144,9 @@ export class ShellCommand extends JejudoCommand {
       componentType: ComponentType.Button,
     })
 
-    const modalCollector = new InteractionCollector(i.client, {
+    const modalCollector = new InteractionCollector(channel.client, {
       time: 1000 * 60 * 60 * 10,
-      filter: async (j) => i.user.id === j.user.id && j.customId === modalId,
+      filter: async (j) => author.id === j.user.id && j.customId === modalId,
       interactionType: InteractionType.ModalSubmit,
     })
 
@@ -170,8 +179,12 @@ export class ShellCommand extends JejudoCommand {
 
       console.log(`killed ${pty.pid}`)
 
-      await i.editReply({
-        components: [],
+      await r.edit({
+        components: [
+          new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
+            ...buttons.map((x) => x.setDisabled(true))
+          ),
+        ],
         content: codeBlock(getContent()),
       })
 

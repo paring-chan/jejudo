@@ -5,7 +5,8 @@
 import {
   ApplicationCommandSubCommandData,
   AutocompleteInteraction,
-  CommandInteraction,
+  Message,
+  User,
 } from 'discord.js'
 
 export abstract class JejudoCommand {
@@ -15,5 +16,5 @@ export abstract class JejudoCommand {
     await i.respond([])
   }
 
-  abstract execute(i: CommandInteraction): Promise<void>
+  abstract execute(msg: Message, args: string, author: User): Promise<void>
 }

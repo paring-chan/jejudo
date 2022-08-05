@@ -4,15 +4,16 @@
 
 import { Jejudo, JejudoCommand } from '../structures'
 import {
-  TextChannel,
   ApplicationCommandOptionType,
-  ChatInputCommandInteraction,
   ButtonBuilder,
   ActionRowBuilder,
   codeBlock,
   ButtonStyle,
   MessageActionRowComponentBuilder,
   ComponentType,
+  User,
+  Message,
+  ButtonInteraction,
 } from 'discord.js'
 import * as util from 'util'
 
@@ -32,13 +33,14 @@ export class EvaluateCommand extends JejudoCommand {
       ],
     })
   }
-  async execute(i: ChatInputCommandInteraction): Promise<void> {
-    const channel = (i.channel ??
-      this.jejudo.client.channels.cache.get(i.channelId) ??
-      (await this.jejudo.client.channels.fetch(i.channelId))) as TextChannel
+  async execute(msg: Message, code: string, author: User): Promise<void> {
+    if (!code) {
+      await msg.edit('code is missing')
+      return
+    }
+    const channel = msg.channel
 
-    const r = await i.deferReply({ fetchReply: true })
-    const code = i.options.getString('code', true)
+    const r = msg
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const client = this.jejudo.client
@@ -64,14 +66,10 @@ export class EvaluateCommand extends JejudoCommand {
           }
           return res
         })
-      if (typeof result === 'string') {
-        await i.editReply({ content: lines[0] })
-        return
-      }
       const chunks: string[] = []
       let current = ''
       for (const line of lines) {
-        if (current.length + line.length + 1 > 1900) {
+        if (current.length + line.length + 1 > 1990) {
           chunks.push(current)
           current = line
           continue
@@ -80,6 +78,11 @@ export class EvaluateCommand extends JejudoCommand {
       }
       if (current.length) {
         chunks.push(current)
+      }
+
+      if (typeof result === 'string' && chunks.length === 1) {
+        await r.edit({ content: lines.join('\n') })
+        return
       }
 
       const prevButton = new ButtonBuilder()
@@ -107,54 +110,65 @@ export class EvaluateCommand extends JejudoCommand {
       ]
 
       let currentPage = 1
-      await i.editReply({
-        content: codeBlock('js', chunks[0]),
-      })
 
-      const update = (stop = false) =>
-        i.editReply({
-          components: [
-            new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
-              generateButtons(`${currentPage} / ${chunks.length}`).map((x) => {
-                if (stop) {
-                  x.setDisabled(true)
-                }
-                return x
-              })
-            ),
-          ],
+      const update = (stop = false, i?: ButtonInteraction) => {
+        const payload = {
+          components:
+            chunks.length > 1
+              ? [
+                  new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
+                    generateButtons(`${currentPage} / ${chunks.length}`).map(
+                      (x) => {
+                        if (stop) {
+                          x.setDisabled(true)
+                        }
+                        return x
+                      }
+                    )
+                  ),
+                ]
+              : [],
           content: codeBlock('js', chunks[currentPage - 1]),
-        })
+        }
+
+        if (i) {
+          return i.update(payload)
+        } else {
+          return r.edit(payload)
+        }
+      }
       await update()
 
-      const collector = channel.createMessageComponentCollector({
-        componentType: ComponentType.Button,
-        filter: (j) => j.user.id === i.user.id && j.message.id === r.id,
-        time: 1000 * 60 * 60 * 10,
-      })
-      collector.on('collect', async (i) => {
-        await i.deferUpdate()
-        switch (i.customId) {
-          case 'jejudo_nextPage':
-            if (currentPage === chunks.length) return
-            currentPage += 1
-            await update()
-            break
-          case 'jejudo_prevPage':
-            if (currentPage === 1) return
-            currentPage -= 1
-            await update()
-            break
-          case 'jejudo_stop':
-            collector.stop()
-            break
-        }
-      })
-      collector.on('end', async () => {
-        await update(true)
-      })
+      if (chunks.length > 1) {
+        const collector = channel.createMessageComponentCollector({
+          componentType: ComponentType.Button,
+          filter: (j) => j.user.id === author.id && j.message.id === r.id,
+          time: 1000 * 60 * 60 * 10,
+        })
+        collector.on('collect', async (i) => {
+          switch (i.customId) {
+            case 'jejudo_nextPage':
+              if (currentPage === chunks.length) return
+              currentPage += 1
+              await update(false, i)
+              break
+            case 'jejudo_prevPage':
+              if (currentPage === 1) return
+              currentPage -= 1
+              await update(false, i)
+              break
+            case 'jejudo_stop':
+              await i.deferUpdate()
+              collector.stop()
+              break
+          }
+        })
+        collector.on('end', async () => {
+          await update(true)
+        })
+      }
     } catch (e) {
-      await i.editReply(`Error\n${codeBlock('js', `${e}`)}`)
+      await r.edit(`Error\n${codeBlock('js', `${e}`)}`)
     }
   }
 }

@@ -5,10 +5,14 @@
 import {
   ApplicationCommandDataResolvable,
   ApplicationCommandType,
+  ChatInputCommandInteraction,
   Client,
   CommandInteraction,
   Interaction,
+  Message,
+  MessageEditOptions,
   PermissionResolvable,
+  User,
 } from 'discord.js'
 import { JejudoCommand } from './JejudoCommand'
 import {
@@ -37,9 +41,12 @@ export class Jejudo {
 
   owners: string[]
 
-  noPermission: (i: CommandInteraction) => void
+  noPermission: (i: ChatInputCommandInteraction | Message) => void
 
-  isOwner: (i: Interaction) => boolean | Promise<boolean>
+  isOwner: (user: User) => boolean | Promise<boolean>
+
+  prefix?: string
+  textCommandName: string
 
   secrets: string[]
 
@@ -50,13 +57,17 @@ export class Jejudo {
       command = 'jejudo',
       noPermission = (i) => i.reply('No permission'),
       isOwner = () => false,
+      textCommand,
       globalVariables = {},
       secrets = [],
+      prefix,
     }: {
       owners?: string[]
+      prefix?: string
+      textCommand?: string
       command?: string
-      noPermission?: (i: CommandInteraction) => void
-      isOwner?: (i: Interaction) => boolean | Promise<boolean>
+      noPermission?: (i: CommandInteraction | Message) => void
+      isOwner?: (user: User) => boolean | Promise<boolean>
       globalVariables?: Record<string, object>
       secrets?: string[]
     }
@@ -65,6 +76,8 @@ export class Jejudo {
     this.commandName = command
     this.noPermission = noPermission
     this.isOwner = isOwner
+    this.textCommandName = textCommand || 'jejudo'
+    this.prefix = prefix
     this.secrets = secrets
     for (const [k, v] of Object.entries(globalVariables)) {
       ;(global as unknown as Record<string, object>)[k] = v
@@ -125,11 +138,44 @@ export class Jejudo {
     this.documentationSources.push(source)
   }
 
-  async run(i: Interaction) {
+  async handleMessage(msg: Message) {
+    if (!this.prefix) return
+    if (!msg.content.startsWith(this.prefix)) return
+
+    if (!this.owners.includes(msg.author.id)) {
+      if (!(await this.isOwner(msg.author))) {
+        return this.noPermission(msg)
+      }
+    }
+
+    const content = msg.content.slice(this.prefix.length)
+
+    const split = content.split(' ')
+
+    const name = split.shift()
+
+    if (!name) return
+
+    if (name !== this.textCommandName) return
+
+    const commandName = split.shift()
+
+    if (!commandName) return
+
+    const command = this._commands.find((x) => x.data.name === commandName)
+
+    if (!command) return
+
+    const m = await msg.reply('Preparing...')
+
+    command.execute(m, split.join(' '), msg.author)
+  }
+
+  async handleInteraction(i: Interaction) {
     if (!i.isChatInputCommand() && !i.isAutocomplete()) return
     if (i.commandName !== this.commandName) return
     if (!this.owners.includes(i.user.id)) {
-      if (!(await this.isOwner(i))) {
+      if (!(await this.isOwner(i.user))) {
         if (i.isCommand()) {
           return this.noPermission(i)
         }
@@ -143,12 +189,33 @@ export class Jejudo {
       await command.autocomplete(i)
       return
     }
+    if (!i.channel) return
     const subCommand = i.options.getSubcommand(true)
     const command = this._commands.find((x) => x.data.name === subCommand)
     if (!command)
       return i.reply({ content: 'Unknown feature', ephemeral: true })
     try {
-      await command.execute(i)
+      let args = ''
+
+      let first = true
+
+      const options = i.options.data[0].options
+
+      if (!options) return
+
+      for (const item of options) {
+        if (first) {
+          args += item.value
+          first = false
+          continue
+        }
+
+        args += ` --${item.name} ${JSON.stringify(item.value)}`
+      }
+
+      const msg = await i.reply({ content: 'Preparing...', fetchReply: true })
+
+      await command.execute(msg, args, i.user)
     } catch (e) {
       if (!i.replied) {
         await i.deleteReply().catch((e) => console.error(e))

@@ -5,7 +5,7 @@
 import { Jejudo, JejudoCommand } from '../structures'
 import {
   ApplicationCommandOptionType,
-  CommandInteraction,
+  Message,
   version as DJSVersion,
 } from 'discord.js'
 import dedent from 'dedent'
@@ -21,7 +21,7 @@ export class SummaryCommand extends JejudoCommand {
     })
   }
 
-  async execute(i: CommandInteraction): Promise<void> {
+  async execute(msg: Message): Promise<void> {
     let content = dedent`Jejudo ${inlineCode(version)}, discord.js ${inlineCode(
       DJSVersion
     )}, Node.js ${inlineCode(process.versions.node)} on ${process.platform}
@@ -45,6 +45,6 @@ export class SummaryCommand extends JejudoCommand {
       content += `\n\nThis bot is not sharded and can see ${this.jejudo.client.guilds.cache.size} guild(s) and ${this.jejudo.client.users.cache.size} user(s).`
     }
     content += `\nAverage websocket latency: ${this.jejudo.client.ws.ping}ms`
-    await i.reply(content)
+    await msg.edit(content)
   }
 }
