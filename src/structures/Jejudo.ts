@@ -10,7 +10,6 @@ import {
   CommandInteraction,
   Interaction,
   Message,
-  MessageEditOptions,
   PermissionResolvable,
   User,
 } from 'discord.js'

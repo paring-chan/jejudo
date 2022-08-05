@@ -6,10 +6,8 @@ import { Jejudo, JejudoCommand } from '../structures'
 import {
   ApplicationCommandOptionType,
   AutocompleteInteraction,
-  ChatInputCommandInteraction,
   EmbedBuilder,
   Message,
-  TextBasedChannel,
 } from 'discord.js'
 import Doc from 'discord.js-docs'
 import yargs from 'yargs'

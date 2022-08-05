@@ -17,7 +17,6 @@ import {
   TextInputStyle,
   InteractionType,
   ModalSubmitInteraction,
-  TextBasedChannel,
   User,
   Message,
 } from 'discord.js'
