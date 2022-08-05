@@ -84,12 +84,6 @@ export class Jejudo {
     for (const [k, v] of Object.entries(globalVariables)) {
       ;(global as unknown as Record<string, object>)[k] = v
     }
-    if (registerDefaultCommands) {
-      this.registerCommand(new SummaryCommand(this))
-      this.registerCommand(new EvaluateCommand(this))
-      this.registerCommand(new ShellCommand(this))
-      this.registerCommand(new DocsCommand(this))
-    }
     this.addDocumentationSource({
       key: 'djs',
       name: 'Discord.JS',
@@ -122,6 +116,12 @@ export class Jejudo {
         version.includes('dev') ? 'dev' : 'stable'
       }.json`,
     })
+    if (registerDefaultCommands) {
+      this.registerCommand(new SummaryCommand(this))
+      this.registerCommand(new EvaluateCommand(this))
+      this.registerCommand(new ShellCommand(this))
+      this.registerCommand(new DocsCommand(this))
+    }
   }
 
   registerCommand(command: JejudoCommand) {
