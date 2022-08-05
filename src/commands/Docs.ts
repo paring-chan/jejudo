@@ -68,13 +68,12 @@ export class DocsCommand extends JejudoCommand {
   }
 
   async execute(msg: Message, args: string): Promise<void> {
-    const channel = msg.channel
     const parsedArgs = await yargs.parseAsync(args)
 
     console.log(parsedArgs)
 
     if (!parsedArgs._.length) {
-      await channel.send('Keyword is missing')
+      await msg.edit('Keyword is missing')
       return
     }
 
@@ -102,7 +101,7 @@ export class DocsCommand extends JejudoCommand {
       }
     })
 
-    await channel.send({
+    await msg.edit({
       embeds: [e],
     })
   }
