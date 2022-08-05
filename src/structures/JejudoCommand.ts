@@ -10,7 +10,10 @@ import {
 } from 'discord.js'
 
 export abstract class JejudoCommand {
-  protected constructor(public data: ApplicationCommandSubCommandData) {}
+  protected constructor(
+    public data: ApplicationCommandSubCommandData,
+    public textCommandAliases: string[] = []
+  ) {}
 
   async autocomplete(i: AutocompleteInteraction) {
     await i.respond([])

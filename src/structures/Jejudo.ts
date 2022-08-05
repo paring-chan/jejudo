@@ -60,6 +60,7 @@ export class Jejudo {
       globalVariables = {},
       secrets = [],
       prefix,
+      registerDefaultCommands = true,
     }: {
       owners?: string[]
       prefix?: string
@@ -69,6 +70,7 @@ export class Jejudo {
       isOwner?: (user: User) => boolean | Promise<boolean>
       globalVariables?: Record<string, object>
       secrets?: string[]
+      registerDefaultCommands?: boolean
     }
   ) {
     this.owners = owners
@@ -82,10 +84,12 @@ export class Jejudo {
     for (const [k, v] of Object.entries(globalVariables)) {
       ;(global as unknown as Record<string, object>)[k] = v
     }
-    this.registerCommand(new SummaryCommand(this))
-    this.registerCommand(new EvaluateCommand(this))
-    this.registerCommand(new ShellCommand(this))
-    this.registerCommand(new DocsCommand(this))
+    if (registerDefaultCommands) {
+      this.registerCommand(new SummaryCommand(this))
+      this.registerCommand(new EvaluateCommand(this))
+      this.registerCommand(new ShellCommand(this))
+      this.registerCommand(new DocsCommand(this))
+    }
     this.addDocumentationSource({
       key: 'djs',
       name: 'Discord.JS',
@@ -158,11 +162,13 @@ export class Jejudo {
 
     if (!this.textCommandName.find((x) => x !== name)) return
 
-    const commandName = split.shift()
+    const commandName = split.shift() ?? 'summary'
 
-    if (!commandName) return
-
-    const command = this._commands.find((x) => x.data.name === commandName)
+    const command = this._commands.find(
+      (x) =>
+        x.data.name === commandName ||
+        x.textCommandAliases.includes(x.data.name)
+    )
 
     if (!command) return
 

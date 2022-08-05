@@ -26,19 +26,22 @@ import { codeBlock } from '@discordjs/builders'
 
 export class ShellCommand extends JejudoCommand {
   constructor(private jejudo: Jejudo) {
-    super({
-      type: ApplicationCommandOptionType.Subcommand,
-      name: 'exec',
-      description: 'Execute a command',
-      options: [
-        {
-          name: 'command',
-          description: 'Command to run',
-          required: true,
-          type: ApplicationCommandOptionType.String,
-        },
-      ],
-    })
+    super(
+      {
+        type: ApplicationCommandOptionType.Subcommand,
+        name: 'exec',
+        description: 'Execute a command',
+        options: [
+          {
+            name: 'command',
+            description: 'Command to run',
+            required: true,
+            type: ApplicationCommandOptionType.String,
+          },
+        ],
+      },
+      ['sh']
+    )
   }
 
   async execute(msg: Message, command: string, author: User): Promise<void> {

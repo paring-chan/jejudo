@@ -19,19 +19,22 @@ import * as util from 'util'
 
 export class EvaluateCommand extends JejudoCommand {
   constructor(public jejudo: Jejudo) {
-    super({
-      type: ApplicationCommandOptionType.Subcommand,
-      name: 'eval',
-      description: 'Evaluate js code',
-      options: [
-        {
-          type: ApplicationCommandOptionType.String,
-          name: 'code',
-          description: 'Code to run',
-          required: true,
-        },
-      ],
-    })
+    super(
+      {
+        type: ApplicationCommandOptionType.Subcommand,
+        name: 'eval',
+        description: 'Evaluate js code',
+        options: [
+          {
+            type: ApplicationCommandOptionType.String,
+            name: 'code',
+            description: 'Code to run',
+            required: true,
+          },
+        ],
+      },
+      ['js']
+    )
   }
   async execute(msg: Message, code: string, author: User): Promise<void> {
     if (!code) {
