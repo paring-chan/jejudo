@@ -14,8 +14,64 @@ import {
   User,
   Message,
   ButtonInteraction,
+  ModalBuilder,
+  ModalActionRowComponentBuilder,
+  TextInputBuilder,
+  TextInputStyle,
+  InteractionCollector,
+  InteractionType,
+  ModalSubmitInteraction,
+  verifyString,
 } from 'discord.js'
 import * as util from 'util'
+
+const splitMessage = (
+  text: string,
+  {
+    maxLength = 2_000,
+    char = '\n',
+    prepend = '',
+    append = '',
+  }: {
+    maxLength?: number
+    char?: string | RegExp | (string | RegExp)[]
+    prepend?: string
+    append?: string
+  } = {}
+) => {
+  text = verifyString(text)
+  if (text.length <= maxLength) return [text]
+  let splitText = [text]
+  if (Array.isArray(char)) {
+    while (
+      char.length > 0 &&
+      splitText.some((elem) => elem.length > maxLength)
+    ) {
+      const currentChar = char.shift()
+      if (currentChar instanceof RegExp) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        splitText = splitText.flatMap((chunk) => chunk.match(currentChar)!)
+      } else {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        splitText = splitText.flatMap((chunk) => chunk.split(currentChar!))
+      }
+    }
+  } else {
+    splitText = text.split(char)
+  }
+  if (splitText.some((elem) => elem.length > maxLength))
+    throw new RangeError('SPLIT_MAX_LEN')
+  const messages = []
+  let msg = ''
+  for (const chunk of splitText) {
+    if (msg && (msg + char + chunk + append).length > maxLength) {
+      messages.push(msg + append)
+      msg = prepend
+    }
+    msg += (msg && msg !== prepend ? char : '') + chunk
+  }
+  return messages.concat(msg).filter((m) => m)
+}
 
 export class EvaluateCommand extends JejudoCommand {
   constructor(public jejudo: Jejudo) {
@@ -71,19 +127,9 @@ export class EvaluateCommand extends JejudoCommand {
           }
           return res
         })
-      const chunks: string[] = []
-      let current = ''
-      for (const line of lines) {
-        if (current.length + line.length + 1 > 1990) {
-          chunks.push(current)
-          current = line
-          continue
-        }
-        current += '\n' + line
-      }
-      if (current.length) {
-        chunks.push(current)
-      }
+      const chunks: string[] = splitMessage(lines.join('\n'), {
+        char: [new RegExp(`.{1,1990}`, 'g'), '\n'],
+      })
 
       if (typeof result === 'string' && chunks.length === 1) {
         await r.edit({ content: lines.join('\n') })
@@ -105,7 +151,6 @@ export class EvaluateCommand extends JejudoCommand {
       const pageButton = new ButtonBuilder()
         .setCustomId('jejudo_page')
         .setStyle(ButtonStyle.Primary)
-        .setDisabled(true)
 
       const generateButtons = (pageString: string): ButtonBuilder[] => [
         prevButton.setDisabled(currentPage === 1),
@@ -150,6 +195,56 @@ export class EvaluateCommand extends JejudoCommand {
           filter: (j) => j.user.id === author.id && j.message.id === r.id,
           time: 1000 * 60 * 60 * 10,
         })
+        const modalId = `jejudo_eval_page_${r.id}`
+
+        const modal = new ModalBuilder()
+          .setCustomId(modalId)
+          .setTitle('Go to page')
+          .addComponents(
+            new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+              new TextInputBuilder()
+                .setCustomId('page')
+                .setLabel('Page')
+                .setStyle(TextInputStyle.Short)
+                .setRequired(true)
+            )
+          )
+
+        const modalCollector = new InteractionCollector(channel.client, {
+          time: 1000 * 60 * 60 * 10,
+          filter: async (j) =>
+            author.id === j.user.id && j.customId === modalId,
+          interactionType: InteractionType.ModalSubmit,
+        })
+
+        modalCollector.on('collect', async (j: ModalSubmitInteraction) => {
+          const value = parseInt(j.fields.getTextInputValue('page'))
+
+          if (isNaN(value)) {
+            await j.reply({
+              ephemeral: true,
+              content: 'Got non-number value',
+            })
+            return
+          }
+
+          if (value <= 0 || value > chunks.length) {
+            await j.reply({
+              ephemeral: true,
+              content: 'Value is out of range',
+            })
+            return
+          }
+
+          currentPage = value
+
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          await j.deferUpdate()
+
+          await update()
+        })
+
         collector.on('collect', async (i) => {
           switch (i.customId) {
             case 'jejudo_nextPage':
@@ -166,6 +261,8 @@ export class EvaluateCommand extends JejudoCommand {
               await i.deferUpdate()
               collector.stop()
               break
+            case 'jejudo_page':
+              await i.showModal(modal)
           }
         })
         collector.on('end', async () => {
