@@ -45,7 +45,7 @@ export class Jejudo {
   isOwner: (user: User) => boolean | Promise<boolean>
 
   prefix?: string
-  textCommandName: string
+  textCommandName: string[]
 
   secrets: string[]
 
@@ -75,7 +75,8 @@ export class Jejudo {
     this.commandName = command
     this.noPermission = noPermission
     this.isOwner = isOwner
-    this.textCommandName = textCommand || 'jejudo'
+    const tc = textCommand || 'jejudo'
+    this.textCommandName = typeof tc === 'string' ? [tc] : tc
     this.prefix = prefix
     this.secrets = secrets
     for (const [k, v] of Object.entries(globalVariables)) {
@@ -155,7 +156,7 @@ export class Jejudo {
 
     if (!name) return
 
-    if (name !== this.textCommandName) return
+    if (!this.textCommandName.find((x) => x !== name)) return
 
     const commandName = split.shift()
 
