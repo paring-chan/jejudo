@@ -4,7 +4,6 @@
 
 import { Jejudo, JejudoCommand } from '../structures'
 import {
-  CommandInteraction,
   ActionRowBuilder,
   ButtonBuilder,
   TextChannel,
