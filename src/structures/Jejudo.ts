@@ -8,6 +8,7 @@ import {
   Client,
   CommandInteraction,
   Interaction,
+  PermissionResolvable,
 } from 'discord.js'
 import { JejudoCommand } from './JejudoCommand'
 import {
@@ -30,7 +31,7 @@ export class Jejudo {
 
   defaultDocsSource = 'djs'
 
-  defaultPermission = false
+  defaultMemberPermissions?: PermissionResolvable
 
   commandName: string
 
@@ -115,6 +116,7 @@ export class Jejudo {
       type: ApplicationCommandType.ChatInput,
       name: this.commandName,
       description: 'Jejudo debugging tool',
+      defaultMemberPermissions: this.defaultMemberPermissions,
       options: this._commands.map((x) => x.data),
     }
   }

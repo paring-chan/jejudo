@@ -12,8 +12,6 @@ const jejudo = new Jejudo(client, {
   isOwner: (i) => owners.includes(i.user.id),
 })
 
-jejudo.defaultPermission = true
-
 let owners: string[] = []
 
 client.once('ready', async () => {
