@@ -6,10 +6,7 @@ import { Client, Team, User } from 'discord.js'
 import { config } from './config'
 import { Jejudo } from '../src'
 
-const client = new Client({
-  intents: ['GUILDS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES'],
-  partials: ['CHANNEL', 'MESSAGE'],
-})
+const client = new Client({ intents: [] })
 
 const jejudo = new Jejudo(client, {
   isOwner: (i) => owners.includes(i.user.id),
@@ -34,6 +31,8 @@ client.once('ready', async () => {
   console.log('ready')
 })
 
-client.on('interactionCreate', (i) => jejudo.run(i))
+client.on('interactionCreate', (i) => {
+  jejudo.run(i)
+})
 
 client.login(config.token).then()

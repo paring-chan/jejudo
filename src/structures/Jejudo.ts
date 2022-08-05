@@ -4,6 +4,7 @@
 
 import {
   ApplicationCommandDataResolvable,
+  ApplicationCommandType,
   Client,
   CommandInteraction,
   Interaction,
@@ -111,10 +112,9 @@ export class Jejudo {
 
   get commandJSON(): ApplicationCommandDataResolvable {
     return {
-      type: 'CHAT_INPUT',
+      type: ApplicationCommandType.ChatInput,
       name: this.commandName,
       description: 'Jejudo debugging tool',
-      defaultPermission: this.defaultPermission,
       options: this._commands.map((x) => x.data),
     }
   }
@@ -124,7 +124,7 @@ export class Jejudo {
   }
 
   async run(i: Interaction) {
-    if (!i.isCommand() && !i.isAutocomplete()) return
+    if (!i.isChatInputCommand() && !i.isAutocomplete()) return
     if (i.commandName !== this.commandName) return
     if (!this.owners.includes(i.user.id)) {
       if (!(await this.isOwner(i))) {

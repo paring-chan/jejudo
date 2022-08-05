@@ -4,23 +4,27 @@
 
 import { Jejudo, JejudoCommand } from '../structures'
 import {
-  CommandInteraction,
-  MessageActionRow,
-  MessageButton,
   TextChannel,
+  ApplicationCommandOptionType,
+  ChatInputCommandInteraction,
+  ButtonBuilder,
+  ActionRowBuilder,
+  codeBlock,
+  ButtonStyle,
+  MessageActionRowComponentBuilder,
+  ComponentType,
 } from 'discord.js'
-import { codeBlock } from '@discordjs/builders'
 import * as util from 'util'
 
 export class EvaluateCommand extends JejudoCommand {
   constructor(public jejudo: Jejudo) {
     super({
-      type: 'SUB_COMMAND',
+      type: ApplicationCommandOptionType.Subcommand,
       name: 'eval',
       description: 'Evaluate js code',
       options: [
         {
-          type: 'STRING',
+          type: ApplicationCommandOptionType.String,
           name: 'code',
           description: 'Code to run',
           required: true,
@@ -28,7 +32,7 @@ export class EvaluateCommand extends JejudoCommand {
       ],
     })
   }
-  async execute(i: CommandInteraction): Promise<void> {
+  async execute(i: ChatInputCommandInteraction): Promise<void> {
     const channel = (i.channel ??
       this.jejudo.client.channels.cache.get(i.channelId) ??
       (await this.jejudo.client.channels.fetch(i.channelId))) as TextChannel
@@ -78,24 +82,24 @@ export class EvaluateCommand extends JejudoCommand {
         chunks.push(current)
       }
 
-      const prevButton = new MessageButton()
+      const prevButton = new ButtonBuilder()
         .setCustomId('jejudo_prevPage')
-        .setStyle('SUCCESS')
+        .setStyle(ButtonStyle.Success)
         .setLabel('Prev')
-      const nextButton = new MessageButton()
+      const nextButton = new ButtonBuilder()
         .setCustomId('jejudo_nextPage')
-        .setStyle('SUCCESS')
+        .setStyle(ButtonStyle.Success)
         .setLabel('Next')
-      const stopButton = new MessageButton()
+      const stopButton = new ButtonBuilder()
         .setCustomId('jejudo_stop')
-        .setStyle('DANGER')
+        .setStyle(ButtonStyle.Danger)
         .setLabel('STOP')
-      const pageButton = new MessageButton()
+      const pageButton = new ButtonBuilder()
         .setCustomId('jejudo_page')
-        .setStyle('PRIMARY')
+        .setStyle(ButtonStyle.Primary)
         .setDisabled(true)
 
-      const generateButtons = (pageString: string): MessageButton[] => [
+      const generateButtons = (pageString: string): ButtonBuilder[] => [
         prevButton.setDisabled(currentPage === 1),
         pageButton.setLabel(pageString),
         nextButton.setDisabled(currentPage === chunks.length),
@@ -110,7 +114,7 @@ export class EvaluateCommand extends JejudoCommand {
       const update = (stop = false) =>
         i.editReply({
           components: [
-            new MessageActionRow().addComponents(
+            new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
               generateButtons(`${currentPage} / ${chunks.length}`).map((x) => {
                 if (stop) {
                   x.setDisabled(true)
@@ -124,7 +128,7 @@ export class EvaluateCommand extends JejudoCommand {
       await update()
 
       const collector = channel.createMessageComponentCollector({
-        componentType: 'BUTTON',
+        componentType: ComponentType.Button,
         filter: (j) => j.user.id === i.user.id && j.message.id === r.id,
         time: 1000 * 60 * 60 * 10,
       })

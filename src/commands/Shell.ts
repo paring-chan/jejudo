@@ -5,9 +5,21 @@
 import { Jejudo, JejudoCommand } from '../structures'
 import {
   CommandInteraction,
-  MessageActionRow,
-  MessageButton,
+  ActionRowBuilder,
+  ButtonBuilder,
   TextChannel,
+  ApplicationCommandOptionType,
+  ChatInputCommandInteraction,
+  ButtonStyle,
+  MessageActionRowComponentBuilder,
+  ComponentType,
+  InteractionCollector,
+  ModalBuilder,
+  TextInputBuilder,
+  ModalActionRowComponentBuilder,
+  TextInputStyle,
+  InteractionType,
+  ModalSubmitInteraction,
 } from 'discord.js'
 import { spawn } from 'node-pty'
 import { Terminal } from 'xterm-headless'
@@ -16,7 +28,7 @@ import { codeBlock } from '@discordjs/builders'
 export class ShellCommand extends JejudoCommand {
   constructor(private jejudo: Jejudo) {
     super({
-      type: 'SUB_COMMAND',
+      type: ApplicationCommandOptionType.Subcommand,
       name: 'exec',
       description: 'Execute a command',
       options: [
@@ -24,20 +36,24 @@ export class ShellCommand extends JejudoCommand {
           name: 'command',
           description: 'Command to run',
           required: true,
-          type: 'STRING',
+          type: ApplicationCommandOptionType.String,
         },
       ],
     })
   }
 
-  async execute(i: CommandInteraction): Promise<void> {
+  async execute(i: ChatInputCommandInteraction): Promise<void> {
     const channel = (i.channel ??
       this.jejudo.client.channels.cache.get(i.channelId) ??
       (await this.jejudo.client.channels.fetch(i.channelId))) as TextChannel
     const r = await i.deferReply({ fetchReply: true })
     const shell =
-      process.env.SHELL || (process.platform === 'win32' ? 'powershell' : null)
-    if (!shell) return i.reply('environment variable `SHELL` not found.')
+      process.env.SHELL || (process.platform === 'win32' ? 'cmd.exe' : null)
+    if (!shell) {
+      await i.reply('environment variable `SHELL` not found.')
+      return
+    }
+    const separator = process.platform === 'win32' ? '\r\n' : '\n'
     const command = i.options.getString('command', true)
     const pty = spawn(shell, [], {
       rows: 24,
@@ -52,10 +68,12 @@ export class ShellCommand extends JejudoCommand {
     })
 
     pty.onExit(() => {
+      term.dispose()
       buttonCollector.stop()
+      console.log(`disposed ${pty.pid}`)
     })
 
-    pty.write(`${command}\n`)
+    pty.write(`${command}${separator}`)
 
     const getContent = () => {
       const lines: string[] = []
@@ -72,33 +90,75 @@ export class ShellCommand extends JejudoCommand {
     }
 
     await i.editReply({
-      content: `Reply this message to send input\n${codeBlock(getContent())}`,
+      content: codeBlock(getContent()),
       components: [
-        new MessageActionRow().addComponents(
-          new MessageButton()
-            .setStyle('DANGER')
+        new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Danger)
             .setCustomId('jejudo_stop')
-            .setLabel('Stop')
+            .setLabel('Stop'),
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Primary)
+            .setCustomId('jejudo_exec_input')
+            .setLabel('Send input')
         ),
       ],
     })
 
     const interval = setInterval(async () => {
-      await i.editReply(
-        `Reply this message to send input\n${codeBlock(getContent())}`
-      )
+      await i.editReply(codeBlock(getContent()))
     }, 1000)
+
+    const modalId = `jejudo_exec_modal_${r.id}`
+
+    const modal = new ModalBuilder()
+      .setCustomId(modalId)
+      .setTitle('Send line')
+      .addComponents(
+        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+          new TextInputBuilder()
+            .setCustomId('input')
+            .setLabel('Line to send')
+            .setStyle(TextInputStyle.Short)
+            .setRequired(true)
+        )
+      )
 
     const buttonCollector = channel.createMessageComponentCollector({
       time: 1000 * 60 * 60 * 10,
-      filter: (j) => j.message.id === r.id && i.user.id === j.user.id,
-      componentType: 'BUTTON',
+      filter: async (j) => {
+        const match = j.message.id === r.id && i.user.id === j.user.id
+
+        if (!match) await j.deferUpdate()
+
+        return match
+      },
+      componentType: ComponentType.Button,
+    })
+
+    const modalCollector = new InteractionCollector(i.client, {
+      time: 1000 * 60 * 60 * 10,
+      filter: async (j) => i.user.id === j.user.id && j.customId === modalId,
+      interactionType: InteractionType.ModalSubmit,
+    })
+
+    modalCollector.on('collect', async (j: ModalSubmitInteraction) => {
+      const value = j.fields.getTextInputValue('input')
+
+      pty.write(`${value}${separator}`)
+
+      j.reply({
+        content: 'sent!',
+        ephemeral: true,
+      })
     })
 
     buttonCollector.on('collect', async (i) => {
-      await i.deferUpdate()
       if (i.customId === 'jejudo_stop') {
         buttonCollector.stop()
+        await i.deferUpdate()
+      } else if (i.customId === 'jejudo_exec_input') {
+        await i.showModal(modal)
       }
     })
 
@@ -116,18 +176,7 @@ export class ShellCommand extends JejudoCommand {
         content: codeBlock(getContent()),
       })
 
-      messageCollector.stop()
-    })
-
-    const messageCollector = channel.createMessageCollector({
-      time: 1000 * 60 * 60 * 10,
-      filter: (m) => {
-        return m.author.id === i.user.id && m.reference?.messageId === r.id
-      },
-    })
-
-    messageCollector.on('collect', (msg) => {
-      pty.write(`${msg.content}\n`)
+      modalCollector.stop()
     })
   }
 }

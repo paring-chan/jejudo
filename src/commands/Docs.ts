@@ -4,28 +4,29 @@
 
 import { Jejudo, JejudoCommand } from '../structures'
 import {
+  ApplicationCommandOptionType,
   AutocompleteInteraction,
-  CommandInteraction,
-  MessageEmbed,
+  ChatInputCommandInteraction,
+  EmbedBuilder,
 } from 'discord.js'
 import Doc from 'discord.js-docs'
 
 export class DocsCommand extends JejudoCommand {
   constructor(public jejudo: Jejudo) {
     super({
-      type: 'SUB_COMMAND',
+      type: ApplicationCommandOptionType.Subcommand,
       name: 'docs',
       description: 'Documentation',
       options: [
         {
-          type: 'STRING',
+          type: ApplicationCommandOptionType.String,
           name: 'keyword',
           description: 'keyword for docs',
           required: true,
           autocomplete: true,
         },
         {
-          type: 'STRING',
+          type: ApplicationCommandOptionType.String,
           name: 'source',
           description: 'source for docs',
           required: false,
@@ -75,24 +76,28 @@ export class DocsCommand extends JejudoCommand {
     }
   }
 
-  async execute(i: CommandInteraction): Promise<void> {
+  async execute(i: ChatInputCommandInteraction): Promise<void> {
     const source = this.jejudo.documentationSources.find(
       (x) =>
         x.key ===
         (i.options.getString('source') ?? this.jejudo.defaultDocsSource)
     )
-    if (!source) return i.reply('Unknown documentation source')
+    if (!source) {
+      await i.reply('Unknown documentation source')
+      return
+    }
 
     const doc = await Doc.fetch(source.url)
 
     const embed = await doc.resolveEmbed(i.options.getString('keyword', true))
 
     if (!embed) {
-      return i.reply({ content: 'No search results found' })
+      await i.reply({ content: 'No search results found' })
+      return
     }
 
-    const e = new MessageEmbed(embed)
-    e.fields.forEach((x) => {
+    const e = new EmbedBuilder(embed)
+    e.data.fields?.forEach((x) => {
       if (x.value.length > 1023) {
         x.value = x.value.slice(0, 1020) + '...'
       }

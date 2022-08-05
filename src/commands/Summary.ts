@@ -3,7 +3,11 @@
  */
 
 import { Jejudo, JejudoCommand } from '../structures'
-import { CommandInteraction, version as DJSVersion } from 'discord.js'
+import {
+  ApplicationCommandOptionType,
+  CommandInteraction,
+  version as DJSVersion,
+} from 'discord.js'
 import dedent from 'dedent'
 import { inlineCode, time } from '@discordjs/builders'
 import { version } from '../constants'
@@ -11,7 +15,7 @@ import { version } from '../constants'
 export class SummaryCommand extends JejudoCommand {
   constructor(public jejudo: Jejudo) {
     super({
-      type: 'SUB_COMMAND',
+      type: ApplicationCommandOptionType.Subcommand,
       name: 'summary',
       description: 'Get info about your bot',
     })
