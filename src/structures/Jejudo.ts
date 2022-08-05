@@ -167,7 +167,7 @@ export class Jejudo {
     const command = this._commands.find(
       (x) =>
         x.data.name === commandName ||
-        x.textCommandAliases.includes(x.data.name)
+        x.textCommandAliases.includes(commandName)
     )
 
     if (!command) return

@@ -47,6 +47,8 @@ export class EvaluateCommand extends JejudoCommand {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const client = this.jejudo.client
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const message = msg
 
     try {
       const result = await eval(code)
