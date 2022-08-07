@@ -174,7 +174,7 @@ export class Jejudo {
 
     const m = await msg.reply('Preparing...')
 
-    command.execute(m, split.join(' '), msg.author)
+    command.execute(m, split.join(' '), msg.author, msg)
   }
 
   async handleInteraction(i: Interaction) {
@@ -221,7 +221,7 @@ export class Jejudo {
 
       const msg = await i.reply({ content: 'Preparing...', fetchReply: true })
 
-      await command.execute(msg, args, i.user)
+      await command.execute(msg, args, i.user, i)
     } catch (e) {
       if (!i.replied) {
         await i.deleteReply().catch((e) => console.error(e))

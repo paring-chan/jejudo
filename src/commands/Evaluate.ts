@@ -22,6 +22,7 @@ import {
   InteractionType,
   ModalSubmitInteraction,
   verifyString,
+  ChatInputCommandInteraction,
 } from 'discord.js'
 import * as util from 'util'
 
@@ -92,19 +93,26 @@ export class EvaluateCommand extends JejudoCommand {
       ['js']
     )
   }
-  async execute(msg: Message, code: string, author: User): Promise<void> {
+  async execute(
+    m: Message,
+    code: string,
+    author: User,
+    reference: Message | ChatInputCommandInteraction
+  ): Promise<void> {
     if (!code) {
-      await msg.edit('code is missing')
+      await m.edit('code is missing')
       return
     }
-    const channel = msg.channel
+    const channel = m.channel
 
-    const r = msg
+    const r = m
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const client = this.jejudo.client
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const message = msg
+    const message = reference ?? m
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const msg = message
 
     try {
       const result = await eval(code)
@@ -128,7 +136,8 @@ export class EvaluateCommand extends JejudoCommand {
           return res
         })
       const chunks: string[] = splitMessage(lines.join('\n'), {
-        char: [new RegExp(`.{1,1990}`, 'g'), '\n'],
+        char: [new RegExp(`.{1,1900}`, 'g'), '\n'],
+        maxLength: 1900,
       })
 
       if (typeof result === 'string' && chunks.length === 1) {
