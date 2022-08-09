@@ -24,7 +24,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
-    "@discordjs/ts-docgen": "0.3.4",
+    "@discordjs/ts-docgen": "0.4.1",
     "@swc/core": "1.2.224",
     "@types/dedent": "0.7.0",
     "@types/lodash": "4.14.182",
