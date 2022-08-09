@@ -70,8 +70,6 @@ export class DocsCommand extends JejudoCommand {
   async execute(msg: Message, args: string): Promise<void> {
     const parsedArgs = await yargs.parseAsync(args)
 
-    console.log(parsedArgs)
-
     if (!parsedArgs._.length) {
       await msg.edit('Keyword is missing')
       return
