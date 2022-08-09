@@ -103,6 +103,11 @@ export class EvaluateCommand extends JejudoCommand {
       await m.edit('code is missing')
       return
     }
+
+    if (code.startsWith('```js\n') && code.endsWith('\n```')) {
+      code = code.slice(6, code.length - 4)
+    }
+
     const channel = m.channel
 
     const r = m
