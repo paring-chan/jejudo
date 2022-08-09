@@ -22,8 +22,8 @@
     "discord.js": "^14.1.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "16.3.0",
-    "@commitlint/config-conventional": "16.2.4",
+    "@commitlint/cli": "17.0.3",
+    "@commitlint/config-conventional": "17.0.3",
     "@discordjs/ts-docgen": "0.3.4",
     "@swc/core": "^1.2.224",
     "@types/dedent": "0.7.0",
