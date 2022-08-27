@@ -136,7 +136,7 @@ export class EvaluateCommand extends JejudoCommand {
             ...this.jejudo.secrets,
             this.jejudo.client.token as string,
           ]) {
-            res = x.split(secret).join('[secret]')
+            res = res.split(secret).join('[secret]')
           }
           return res
         })
