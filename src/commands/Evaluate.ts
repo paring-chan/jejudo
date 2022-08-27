@@ -118,6 +118,10 @@ export class EvaluateCommand extends JejudoCommand {
     const message = reference ?? m
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const msg = message
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const i = reference
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const interaction = reference
 
     try {
       const result = await eval(code)
