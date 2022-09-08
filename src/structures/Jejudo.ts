@@ -146,12 +146,6 @@ export class Jejudo {
     if (!this.prefix) return
     if (!msg.content.startsWith(this.prefix)) return
 
-    if (!this.owners.includes(msg.author.id)) {
-      if (!(await this.isOwner(msg.author))) {
-        return this.noPermission(msg)
-      }
-    }
-
     const content = msg.content.slice(this.prefix.length)
 
     const split = content.split(' ')
@@ -171,6 +165,12 @@ export class Jejudo {
     )
 
     if (!command) return
+
+    if (!this.owners.includes(msg.author.id)) {
+      if (!(await this.isOwner(msg.author))) {
+        return this.noPermission(msg)
+      }
+    }
 
     const m = await msg.reply('Preparing...')
 
