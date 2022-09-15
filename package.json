@@ -15,7 +15,7 @@
     "node-pty": "^0.10.1",
     "tsup": "^5.11.11",
     "typescript": "4.7",
-    "xterm-headless": "^4.19.0",
+    "xterm-headless": "^5.0.0",
     "yargs": "^17.5.1"
   },
   "peerDependencies": {
