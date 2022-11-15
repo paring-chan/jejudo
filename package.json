@@ -14,7 +14,7 @@
     "lodash": "^4.17.21",
     "node-pty": "^0.10.1",
     "tsup": "^6.0.0",
-    "typescript": "4.8",
+    "typescript": "4.9",
     "xterm-headless": "^5.0.0",
     "yargs": "^17.5.1"
   },
