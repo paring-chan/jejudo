@@ -64,7 +64,7 @@ export class Jejudo {
     }: {
       owners?: string[]
       prefix?: string
-      textCommand?: string
+      textCommand?: string | string[]
       command?: string
       noPermission?: (i: CommandInteraction | Message) => void
       isOwner?: (user: User) => boolean | Promise<boolean>
