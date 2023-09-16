@@ -31,7 +31,7 @@
     "@types/node": "18.11.9",
     "@types/yargs": "17.0.13",
     "discord.js": "14.13.0",
-    "eslint-config-prettier": "8.5.0",
+    "eslint-config-prettier": "8.10.0",
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.2",
     "lint-staged": "13.0.3",
