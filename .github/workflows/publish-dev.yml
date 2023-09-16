@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+      - run: corepack enable
       - run: yarn
       - run: COMMIT_ID=$(git rev-parse --short HEAD) node publish-version.js
       - uses: JS-DevTools/npm-publish@v1
