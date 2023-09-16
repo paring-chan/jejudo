@@ -20,17 +20,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install node.js v16
+      - name: Install node.js v20
         uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: 'yarn'
-          cache-dependency-path: yarn.lock
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install dependencies
-        run: yarn --immutable
+        run: pnpm i --frozen-lockfile
 
       - name: Build docs
-        run: yarn docs
+        run: pnpm docs
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3

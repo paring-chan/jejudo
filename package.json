@@ -14,7 +14,6 @@
     "lodash": "^4.17.21",
     "node-pty": "^1.0.0",
     "tsup": "^6.7.0",
-    "typescript": "~4.9.5",
     "xterm-headless": "^5.3.0",
     "yargs": "^17.7.2"
   },
@@ -24,6 +23,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.2.0",
     "@commitlint/config-conventional": "17.2.0",
+    "@discordjs/builders": "^1.6.5",
     "@discordjs/ts-docgen": "0.4.1",
     "@swc/core": "1.3.18",
     "@types/dedent": "0.7.0",
@@ -36,13 +36,14 @@
     "husky": "8.0.2",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
-    "typedoc": "0.23.21"
+    "typedoc": "0.25.1",
+    "typescript": "~5.2.2"
   },
   "scripts": {
     "prepare": "husky install",
     "lint": "lint-staged",
     "build": "tsup-node",
-    "prepack": "yarn build",
+    "prepack": "pnpm build",
     "docs": "typedoc --json docs/typedoc-out.json src/index.ts && ts-node scripts/docs"
   },
   "lint-staged": {
