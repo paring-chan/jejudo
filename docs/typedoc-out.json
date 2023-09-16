@@ -1,0 +1,3788 @@
+{
+	"id": 0,
+	"name": "jejudo",
+	"variant": "project",
+	"kind": 1,
+	"flags": {},
+	"children": [
+		{
+			"id": 114,
+			"name": "DocsCommand",
+			"variant": "declaration",
+			"kind": 128,
+			"flags": {},
+			"children": [
+				{
+					"id": 115,
+					"name": "constructor",
+					"variant": "declaration",
+					"kind": 512,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Docs.ts",
+							"line": 16,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Docs.ts#L16"
+						}
+					],
+					"signatures": [
+						{
+							"id": 116,
+							"name": "new DocsCommand",
+							"variant": "signature",
+							"kind": 16384,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Docs.ts",
+									"line": 16,
+									"character": 2,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Docs.ts#L16"
+								}
+							],
+							"parameters": [
+								{
+									"id": 117,
+									"name": "jejudo",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 17,
+										"name": "Jejudo",
+										"package": "jejudo"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 114,
+								"name": "DocsCommand",
+								"package": "jejudo"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 3,
+								"name": "JejudoCommand.constructor"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 2,
+						"name": "JejudoCommand.constructor"
+					}
+				},
+				{
+					"id": 126,
+					"name": "data",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 15,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L15"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+							"qualifiedName": "ApplicationCommandSubCommandData"
+						},
+						"name": "ApplicationCommandSubCommandData",
+						"package": "discord.js"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 6,
+						"name": "JejudoCommand.data"
+					}
+				},
+				{
+					"id": 118,
+					"name": "jejudo",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "commands/Docs.ts",
+							"line": 16,
+							"character": 21,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Docs.ts#L16"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": 17,
+						"name": "Jejudo",
+						"package": "jejudo"
+					}
+				},
+				{
+					"id": 127,
+					"name": "textCommandAliases",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 16,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L16"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "string"
+						}
+					},
+					"defaultValue": "[]",
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 7,
+						"name": "JejudoCommand.textCommandAliases"
+					}
+				},
+				{
+					"id": 119,
+					"name": "autocomplete",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Docs.ts",
+							"line": 43,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Docs.ts#L43"
+						}
+					],
+					"signatures": [
+						{
+							"id": 120,
+							"name": "autocomplete",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Docs.ts",
+									"line": 43,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Docs.ts#L43"
+								}
+							],
+							"parameters": [
+								{
+									"id": 121,
+									"name": "i",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "AutocompleteInteraction"
+										},
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "CacheType"
+												},
+												"name": "CacheType",
+												"package": "discord.js"
+											}
+										],
+										"name": "AutocompleteInteraction",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 9,
+								"name": "JejudoCommand.autocomplete"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 8,
+						"name": "JejudoCommand.autocomplete"
+					}
+				},
+				{
+					"id": 122,
+					"name": "execute",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Docs.ts",
+							"line": 70,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Docs.ts#L70"
+						}
+					],
+					"signatures": [
+						{
+							"id": 123,
+							"name": "execute",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Docs.ts",
+									"line": 70,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Docs.ts#L70"
+								}
+							],
+							"parameters": [
+								{
+									"id": 124,
+									"name": "msg",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "Message"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										],
+										"name": "Message",
+										"package": "discord.js"
+									}
+								},
+								{
+									"id": 125,
+									"name": "args",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 12,
+								"name": "JejudoCommand.execute"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 11,
+						"name": "JejudoCommand.execute"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"children": [
+						115
+					]
+				},
+				{
+					"title": "Properties",
+					"children": [
+						126,
+						118,
+						127
+					]
+				},
+				{
+					"title": "Methods",
+					"children": [
+						119,
+						122
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "commands/Docs.ts",
+					"line": 15,
+					"character": 13,
+					"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Docs.ts#L15"
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 1,
+					"name": "JejudoCommand",
+					"package": "jejudo"
+				}
+			]
+		},
+		{
+			"id": 70,
+			"name": "EvaluateCommand",
+			"variant": "declaration",
+			"kind": 128,
+			"flags": {},
+			"children": [
+				{
+					"id": 71,
+					"name": "constructor",
+					"variant": "declaration",
+					"kind": 512,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Evaluate.ts",
+							"line": 78,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Evaluate.ts#L78"
+						}
+					],
+					"signatures": [
+						{
+							"id": 72,
+							"name": "new EvaluateCommand",
+							"variant": "signature",
+							"kind": 16384,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Evaluate.ts",
+									"line": 78,
+									"character": 2,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Evaluate.ts#L78"
+								}
+							],
+							"parameters": [
+								{
+									"id": 73,
+									"name": "jejudo",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 17,
+										"name": "Jejudo",
+										"package": "jejudo"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 70,
+								"name": "EvaluateCommand",
+								"package": "jejudo"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 3,
+								"name": "JejudoCommand.constructor"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 2,
+						"name": "JejudoCommand.constructor"
+					}
+				},
+				{
+					"id": 81,
+					"name": "data",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 15,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L15"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+							"qualifiedName": "ApplicationCommandSubCommandData"
+						},
+						"name": "ApplicationCommandSubCommandData",
+						"package": "discord.js"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 6,
+						"name": "JejudoCommand.data"
+					}
+				},
+				{
+					"id": 74,
+					"name": "jejudo",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "commands/Evaluate.ts",
+							"line": 78,
+							"character": 21,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Evaluate.ts#L78"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": 17,
+						"name": "Jejudo",
+						"package": "jejudo"
+					}
+				},
+				{
+					"id": 82,
+					"name": "textCommandAliases",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 16,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L16"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "string"
+						}
+					},
+					"defaultValue": "[]",
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 7,
+						"name": "JejudoCommand.textCommandAliases"
+					}
+				},
+				{
+					"id": 83,
+					"name": "autocomplete",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 19,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L19"
+						}
+					],
+					"signatures": [
+						{
+							"id": 84,
+							"name": "autocomplete",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/JejudoCommand.ts",
+									"line": 19,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L19"
+								}
+							],
+							"parameters": [
+								{
+									"id": 85,
+									"name": "i",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "AutocompleteInteraction"
+										},
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "CacheType"
+												},
+												"name": "CacheType",
+												"package": "discord.js"
+											}
+										],
+										"name": "AutocompleteInteraction",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"target": 9,
+								"name": "JejudoCommand.autocomplete"
+							}
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 8,
+						"name": "JejudoCommand.autocomplete"
+					}
+				},
+				{
+					"id": 75,
+					"name": "execute",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Evaluate.ts",
+							"line": 96,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Evaluate.ts#L96"
+						}
+					],
+					"signatures": [
+						{
+							"id": 76,
+							"name": "execute",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Evaluate.ts",
+									"line": 96,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Evaluate.ts#L96"
+								}
+							],
+							"parameters": [
+								{
+									"id": 77,
+									"name": "m",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "Message"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										],
+										"name": "Message",
+										"package": "discord.js"
+									}
+								},
+								{
+									"id": 78,
+									"name": "code",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 79,
+									"name": "author",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "User"
+										},
+										"name": "User",
+										"package": "discord.js"
+									}
+								},
+								{
+									"id": 80,
+									"name": "reference",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "Message"
+												},
+												"typeArguments": [
+													{
+														"type": "intrinsic",
+														"name": "boolean"
+													}
+												],
+												"name": "Message",
+												"package": "discord.js"
+											},
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "ChatInputCommandInteraction"
+												},
+												"typeArguments": [
+													{
+														"type": "reference",
+														"target": {
+															"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+															"qualifiedName": "CacheType"
+														},
+														"name": "CacheType",
+														"package": "discord.js"
+													}
+												],
+												"name": "ChatInputCommandInteraction",
+												"package": "discord.js"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 12,
+								"name": "JejudoCommand.execute"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 11,
+						"name": "JejudoCommand.execute"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"children": [
+						71
+					]
+				},
+				{
+					"title": "Properties",
+					"children": [
+						81,
+						74,
+						82
+					]
+				},
+				{
+					"title": "Methods",
+					"children": [
+						83,
+						75
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "commands/Evaluate.ts",
+					"line": 77,
+					"character": 13,
+					"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Evaluate.ts#L77"
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 1,
+					"name": "JejudoCommand",
+					"package": "jejudo"
+				}
+			]
+		},
+		{
+			"id": 17,
+			"name": "Jejudo",
+			"variant": "declaration",
+			"kind": 128,
+			"flags": {},
+			"children": [
+				{
+					"id": 18,
+					"name": "constructor",
+					"variant": "declaration",
+					"kind": 512,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 52,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L52"
+						}
+					],
+					"signatures": [
+						{
+							"id": 19,
+							"name": "new Jejudo",
+							"variant": "signature",
+							"kind": 16384,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/Jejudo.ts",
+									"line": 52,
+									"character": 2,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L52"
+								}
+							],
+							"parameters": [
+								{
+									"id": 20,
+									"name": "client",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "Client"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										],
+										"name": "Client",
+										"package": "discord.js"
+									}
+								},
+								{
+									"id": 21,
+									"name": "__namedParameters",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 22,
+											"name": "__type",
+											"variant": "declaration",
+											"kind": 65536,
+											"flags": {},
+											"children": [
+												{
+													"id": 26,
+													"name": "command",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 68,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L68"
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												},
+												{
+													"id": 35,
+													"name": "globalVariables",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 71,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L71"
+														}
+													],
+													"type": {
+														"type": "reference",
+														"target": {
+															"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+															"qualifiedName": "Record"
+														},
+														"typeArguments": [
+															{
+																"type": "intrinsic",
+																"name": "string"
+															},
+															{
+																"type": "intrinsic",
+																"name": "object"
+															}
+														],
+														"name": "Record",
+														"package": "typescript"
+													}
+												},
+												{
+													"id": 31,
+													"name": "isOwner",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 70,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L70"
+														}
+													],
+													"type": {
+														"type": "reflection",
+														"declaration": {
+															"id": 32,
+															"name": "__type",
+															"variant": "declaration",
+															"kind": 65536,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "structures/Jejudo.ts",
+																	"line": 70,
+																	"character": 16,
+																	"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L70"
+																}
+															],
+															"signatures": [
+																{
+																	"id": 33,
+																	"name": "__type",
+																	"variant": "signature",
+																	"kind": 4096,
+																	"flags": {},
+																	"sources": [
+																		{
+																			"fileName": "structures/Jejudo.ts",
+																			"line": 70,
+																			"character": 16,
+																			"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L70"
+																		}
+																	],
+																	"parameters": [
+																		{
+																			"id": 34,
+																			"name": "user",
+																			"variant": "param",
+																			"kind": 32768,
+																			"flags": {},
+																			"type": {
+																				"type": "reference",
+																				"target": {
+																					"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+																					"qualifiedName": "User"
+																				},
+																				"name": "User",
+																				"package": "discord.js"
+																			}
+																		}
+																	],
+																	"type": {
+																		"type": "union",
+																		"types": [
+																			{
+																				"type": "intrinsic",
+																				"name": "boolean"
+																			},
+																			{
+																				"type": "reference",
+																				"target": {
+																					"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+																					"qualifiedName": "Promise"
+																				},
+																				"typeArguments": [
+																					{
+																						"type": "intrinsic",
+																						"name": "boolean"
+																					}
+																				],
+																				"name": "Promise",
+																				"package": "typescript"
+																			}
+																		]
+																	}
+																}
+															]
+														}
+													}
+												},
+												{
+													"id": 27,
+													"name": "noPermission",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 69,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L69"
+														}
+													],
+													"type": {
+														"type": "reflection",
+														"declaration": {
+															"id": 28,
+															"name": "__type",
+															"variant": "declaration",
+															"kind": 65536,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "structures/Jejudo.ts",
+																	"line": 69,
+																	"character": 21,
+																	"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L69"
+																}
+															],
+															"signatures": [
+																{
+																	"id": 29,
+																	"name": "__type",
+																	"variant": "signature",
+																	"kind": 4096,
+																	"flags": {},
+																	"sources": [
+																		{
+																			"fileName": "structures/Jejudo.ts",
+																			"line": 69,
+																			"character": 21,
+																			"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L69"
+																		}
+																	],
+																	"parameters": [
+																		{
+																			"id": 30,
+																			"name": "i",
+																			"variant": "param",
+																			"kind": 32768,
+																			"flags": {},
+																			"type": {
+																				"type": "union",
+																				"types": [
+																					{
+																						"type": "reference",
+																						"target": {
+																							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+																							"qualifiedName": "Message"
+																						},
+																						"typeArguments": [
+																							{
+																								"type": "intrinsic",
+																								"name": "boolean"
+																							}
+																						],
+																						"name": "Message",
+																						"package": "discord.js"
+																					},
+																					{
+																						"type": "reference",
+																						"target": {
+																							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+																							"qualifiedName": "CommandInteraction"
+																						},
+																						"typeArguments": [
+																							{
+																								"type": "reference",
+																								"target": {
+																									"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+																									"qualifiedName": "CacheType"
+																								},
+																								"name": "CacheType",
+																								"package": "discord.js"
+																							}
+																						],
+																						"name": "CommandInteraction",
+																						"package": "discord.js"
+																					}
+																				]
+																			}
+																		}
+																	],
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "void"
+																	}
+																}
+															]
+														}
+													}
+												},
+												{
+													"id": 23,
+													"name": "owners",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 65,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L65"
+														}
+													],
+													"type": {
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "string"
+														}
+													}
+												},
+												{
+													"id": 24,
+													"name": "prefix",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 66,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L66"
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												},
+												{
+													"id": 37,
+													"name": "registerDefaultCommands",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 73,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L73"
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "boolean"
+													}
+												},
+												{
+													"id": 36,
+													"name": "secrets",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 72,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L72"
+														}
+													],
+													"type": {
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "string"
+														}
+													}
+												},
+												{
+													"id": 25,
+													"name": "textCommand",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "structures/Jejudo.ts",
+															"line": 67,
+															"character": 6,
+															"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L67"
+														}
+													],
+													"type": {
+														"type": "union",
+														"types": [
+															{
+																"type": "intrinsic",
+																"name": "string"
+															},
+															{
+																"type": "array",
+																"elementType": {
+																	"type": "intrinsic",
+																	"name": "string"
+																}
+															}
+														]
+													}
+												}
+											],
+											"groups": [
+												{
+													"title": "Properties",
+													"children": [
+														26,
+														35,
+														31,
+														27,
+														23,
+														24,
+														37,
+														36,
+														25
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "structures/Jejudo.ts",
+													"line": 64,
+													"character": 7,
+													"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L64"
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 17,
+								"name": "Jejudo",
+								"package": "jejudo"
+							}
+						}
+					]
+				},
+				{
+					"id": 38,
+					"name": "_commands",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPrivate": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 32,
+							"character": 10,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L32"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "reference",
+							"target": 1,
+							"name": "JejudoCommand",
+							"package": "jejudo"
+						}
+					},
+					"defaultValue": "[]"
+				},
+				{
+					"id": 55,
+					"name": "client",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 53,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L53"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+							"qualifiedName": "Client"
+						},
+						"typeArguments": [
+							{
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						],
+						"name": "Client",
+						"package": "discord.js"
+					}
+				},
+				{
+					"id": 42,
+					"name": "commandName",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 39,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L39"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 40,
+					"name": "defaultDocsSource",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 35,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L35"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"defaultValue": "'djs'"
+				},
+				{
+					"id": 41,
+					"name": "defaultMemberPermissions",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 37,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L37"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+							"qualifiedName": "PermissionResolvable"
+						},
+						"name": "PermissionResolvable",
+						"package": "discord.js"
+					}
+				},
+				{
+					"id": 39,
+					"name": "documentationSources",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 33,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L33"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "reference",
+							"target": {
+								"sourceFileName": "src/structures/Jejudo.ts",
+								"qualifiedName": "DocumentationSource"
+							},
+							"name": "DocumentationSource",
+							"package": "jejudo"
+						}
+					},
+					"defaultValue": "[]"
+				},
+				{
+					"id": 48,
+					"name": "isOwner",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 45,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L45"
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 49,
+							"name": "__type",
+							"variant": "declaration",
+							"kind": 65536,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/Jejudo.ts",
+									"line": 45,
+									"character": 11,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L45"
+								}
+							],
+							"signatures": [
+								{
+									"id": 50,
+									"name": "__type",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "structures/Jejudo.ts",
+											"line": 45,
+											"character": 11,
+											"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L45"
+										}
+									],
+									"parameters": [
+										{
+											"id": 51,
+											"name": "user",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "User"
+												},
+												"name": "User",
+												"package": "discord.js"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											},
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+													"qualifiedName": "Promise"
+												},
+												"typeArguments": [
+													{
+														"type": "intrinsic",
+														"name": "boolean"
+													}
+												],
+												"name": "Promise",
+												"package": "typescript"
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 44,
+					"name": "noPermission",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 43,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L43"
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 45,
+							"name": "__type",
+							"variant": "declaration",
+							"kind": 65536,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/Jejudo.ts",
+									"line": 43,
+									"character": 16,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L43"
+								}
+							],
+							"signatures": [
+								{
+									"id": 46,
+									"name": "__type",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "structures/Jejudo.ts",
+											"line": 43,
+											"character": 16,
+											"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L43"
+										}
+									],
+									"parameters": [
+										{
+											"id": 47,
+											"name": "i",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"target": {
+															"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+															"qualifiedName": "Message"
+														},
+														"typeArguments": [
+															{
+																"type": "intrinsic",
+																"name": "boolean"
+															}
+														],
+														"name": "Message",
+														"package": "discord.js"
+													},
+													{
+														"type": "reference",
+														"target": {
+															"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+															"qualifiedName": "ChatInputCommandInteraction"
+														},
+														"typeArguments": [
+															{
+																"type": "reference",
+																"target": {
+																	"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+																	"qualifiedName": "CacheType"
+																},
+																"name": "CacheType",
+																"package": "discord.js"
+															}
+														],
+														"name": "ChatInputCommandInteraction",
+														"package": "discord.js"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 43,
+					"name": "owners",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 41,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L41"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "string"
+						}
+					}
+				},
+				{
+					"id": 52,
+					"name": "prefix",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 47,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L47"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 54,
+					"name": "secrets",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 50,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L50"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "string"
+						}
+					}
+				},
+				{
+					"id": 53,
+					"name": "textCommandName",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 48,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L48"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "string"
+						}
+					}
+				},
+				{
+					"id": 59,
+					"name": "commandJSON",
+					"variant": "declaration",
+					"kind": 262144,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 131,
+							"character": 6,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L131"
+						}
+					],
+					"getSignature": {
+						"id": 60,
+						"name": "commandJSON",
+						"variant": "signature",
+						"kind": 524288,
+						"flags": {},
+						"sources": [
+							{
+								"fileName": "structures/Jejudo.ts",
+								"line": 131,
+								"character": 6,
+								"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L131"
+							}
+						],
+						"type": {
+							"type": "reference",
+							"target": {
+								"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+								"qualifiedName": "ApplicationCommandDataResolvable"
+							},
+							"name": "ApplicationCommandDataResolvable",
+							"package": "discord.js"
+						}
+					}
+				},
+				{
+					"id": 61,
+					"name": "addDocumentationSource",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 141,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L141"
+						}
+					],
+					"signatures": [
+						{
+							"id": 62,
+							"name": "addDocumentationSource",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/Jejudo.ts",
+									"line": 141,
+									"character": 2,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L141"
+								}
+							],
+							"parameters": [
+								{
+									"id": 63,
+									"name": "source",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "src/structures/Jejudo.ts",
+											"qualifiedName": "DocumentationSource"
+										},
+										"name": "DocumentationSource",
+										"package": "jejudo"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 67,
+					"name": "handleInteraction",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 180,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L180"
+						}
+					],
+					"signatures": [
+						{
+							"id": 68,
+							"name": "handleInteraction",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/Jejudo.ts",
+									"line": 180,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L180"
+								}
+							],
+							"parameters": [
+								{
+									"id": 69,
+									"name": "i",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "Interaction"
+										},
+										"name": "Interaction",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "void"
+											},
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "InteractionResponse"
+												},
+												"typeArguments": [
+													{
+														"type": "intrinsic",
+														"name": "boolean"
+													}
+												],
+												"name": "InteractionResponse",
+												"package": "discord.js"
+											}
+										]
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							}
+						}
+					]
+				},
+				{
+					"id": 64,
+					"name": "handleMessage",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 145,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L145"
+						}
+					],
+					"signatures": [
+						{
+							"id": 65,
+							"name": "handleMessage",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/Jejudo.ts",
+									"line": 145,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L145"
+								}
+							],
+							"parameters": [
+								{
+									"id": 66,
+									"name": "msg",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "Message"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										],
+										"name": "Message",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							}
+						}
+					]
+				},
+				{
+					"id": 56,
+					"name": "registerCommand",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/Jejudo.ts",
+							"line": 127,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L127"
+						}
+					],
+					"signatures": [
+						{
+							"id": 57,
+							"name": "registerCommand",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/Jejudo.ts",
+									"line": 127,
+									"character": 2,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L127"
+								}
+							],
+							"parameters": [
+								{
+									"id": 58,
+									"name": "command",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 1,
+										"name": "JejudoCommand",
+										"package": "jejudo"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"children": [
+						18
+					]
+				},
+				{
+					"title": "Properties",
+					"children": [
+						38,
+						55,
+						42,
+						40,
+						41,
+						39,
+						48,
+						44,
+						43,
+						52,
+						54,
+						53
+					]
+				},
+				{
+					"title": "Accessors",
+					"children": [
+						59
+					]
+				},
+				{
+					"title": "Methods",
+					"children": [
+						61,
+						67,
+						64,
+						56
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "structures/Jejudo.ts",
+					"line": 31,
+					"character": 13,
+					"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/Jejudo.ts#L31"
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "JejudoCommand",
+			"variant": "declaration",
+			"kind": 128,
+			"flags": {
+				"isAbstract": true
+			},
+			"children": [
+				{
+					"id": 2,
+					"name": "constructor",
+					"variant": "declaration",
+					"kind": 512,
+					"flags": {
+						"isProtected": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 14,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L14"
+						}
+					],
+					"signatures": [
+						{
+							"id": 3,
+							"name": "new JejudoCommand",
+							"variant": "signature",
+							"kind": 16384,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/JejudoCommand.ts",
+									"line": 14,
+									"character": 2,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L14"
+								}
+							],
+							"parameters": [
+								{
+									"id": 4,
+									"name": "data",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "ApplicationCommandSubCommandData"
+										},
+										"name": "ApplicationCommandSubCommandData",
+										"package": "discord.js"
+									}
+								},
+								{
+									"id": 5,
+									"name": "textCommandAliases",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									},
+									"defaultValue": "[]"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 1,
+								"name": "JejudoCommand",
+								"package": "jejudo"
+							}
+						}
+					]
+				},
+				{
+					"id": 6,
+					"name": "data",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 15,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L15"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+							"qualifiedName": "ApplicationCommandSubCommandData"
+						},
+						"name": "ApplicationCommandSubCommandData",
+						"package": "discord.js"
+					}
+				},
+				{
+					"id": 7,
+					"name": "textCommandAliases",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 16,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L16"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "string"
+						}
+					},
+					"defaultValue": "[]"
+				},
+				{
+					"id": 8,
+					"name": "autocomplete",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 19,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L19"
+						}
+					],
+					"signatures": [
+						{
+							"id": 9,
+							"name": "autocomplete",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/JejudoCommand.ts",
+									"line": 19,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L19"
+								}
+							],
+							"parameters": [
+								{
+									"id": 10,
+									"name": "i",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "AutocompleteInteraction"
+										},
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "CacheType"
+												},
+												"name": "CacheType",
+												"package": "discord.js"
+											}
+										],
+										"name": "AutocompleteInteraction",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							}
+						}
+					]
+				},
+				{
+					"id": 11,
+					"name": "execute",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {
+						"isAbstract": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 23,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L23"
+						}
+					],
+					"signatures": [
+						{
+							"id": 12,
+							"name": "execute",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/JejudoCommand.ts",
+									"line": 23,
+									"character": 11,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L23"
+								}
+							],
+							"parameters": [
+								{
+									"id": 13,
+									"name": "msg",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "Message"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										],
+										"name": "Message",
+										"package": "discord.js"
+									}
+								},
+								{
+									"id": 14,
+									"name": "args",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 15,
+									"name": "author",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "User"
+										},
+										"name": "User",
+										"package": "discord.js"
+									}
+								},
+								{
+									"id": 16,
+									"name": "reference",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "Message"
+												},
+												"typeArguments": [
+													{
+														"type": "intrinsic",
+														"name": "boolean"
+													}
+												],
+												"name": "Message",
+												"package": "discord.js"
+											},
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "ChatInputCommandInteraction"
+												},
+												"typeArguments": [
+													{
+														"type": "reference",
+														"target": {
+															"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+															"qualifiedName": "CacheType"
+														},
+														"name": "CacheType",
+														"package": "discord.js"
+													}
+												],
+												"name": "ChatInputCommandInteraction",
+												"package": "discord.js"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"children": [
+						2
+					]
+				},
+				{
+					"title": "Properties",
+					"children": [
+						6,
+						7
+					]
+				},
+				{
+					"title": "Methods",
+					"children": [
+						8,
+						11
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "structures/JejudoCommand.ts",
+					"line": 13,
+					"character": 22,
+					"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L13"
+				}
+			],
+			"extendedBy": [
+				{
+					"type": "reference",
+					"target": 70,
+					"name": "EvaluateCommand"
+				},
+				{
+					"type": "reference",
+					"target": 86,
+					"name": "SummaryCommand"
+				},
+				{
+					"type": "reference",
+					"target": 99,
+					"name": "ShellCommand"
+				},
+				{
+					"type": "reference",
+					"target": 114,
+					"name": "DocsCommand"
+				}
+			]
+		},
+		{
+			"id": 99,
+			"name": "ShellCommand",
+			"variant": "declaration",
+			"kind": 128,
+			"flags": {},
+			"children": [
+				{
+					"id": 100,
+					"name": "constructor",
+					"variant": "declaration",
+					"kind": 512,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Shell.ts",
+							"line": 28,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Shell.ts#L28"
+						}
+					],
+					"signatures": [
+						{
+							"id": 101,
+							"name": "new ShellCommand",
+							"variant": "signature",
+							"kind": 16384,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Shell.ts",
+									"line": 28,
+									"character": 2,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Shell.ts#L28"
+								}
+							],
+							"parameters": [
+								{
+									"id": 102,
+									"name": "jejudo",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 17,
+										"name": "Jejudo",
+										"package": "jejudo"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 99,
+								"name": "ShellCommand",
+								"package": "jejudo"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 3,
+								"name": "JejudoCommand.constructor"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 2,
+						"name": "JejudoCommand.constructor"
+					}
+				},
+				{
+					"id": 109,
+					"name": "data",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 15,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L15"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+							"qualifiedName": "ApplicationCommandSubCommandData"
+						},
+						"name": "ApplicationCommandSubCommandData",
+						"package": "discord.js"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 6,
+						"name": "JejudoCommand.data"
+					}
+				},
+				{
+					"id": 103,
+					"name": "jejudo",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPrivate": true
+					},
+					"sources": [
+						{
+							"fileName": "commands/Shell.ts",
+							"line": 28,
+							"character": 22,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Shell.ts#L28"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": 17,
+						"name": "Jejudo",
+						"package": "jejudo"
+					}
+				},
+				{
+					"id": 110,
+					"name": "textCommandAliases",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 16,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L16"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "string"
+						}
+					},
+					"defaultValue": "[]",
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 7,
+						"name": "JejudoCommand.textCommandAliases"
+					}
+				},
+				{
+					"id": 111,
+					"name": "autocomplete",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 19,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L19"
+						}
+					],
+					"signatures": [
+						{
+							"id": 112,
+							"name": "autocomplete",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/JejudoCommand.ts",
+									"line": 19,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L19"
+								}
+							],
+							"parameters": [
+								{
+									"id": 113,
+									"name": "i",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "AutocompleteInteraction"
+										},
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "CacheType"
+												},
+												"name": "CacheType",
+												"package": "discord.js"
+											}
+										],
+										"name": "AutocompleteInteraction",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"target": 9,
+								"name": "JejudoCommand.autocomplete"
+							}
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 8,
+						"name": "JejudoCommand.autocomplete"
+					}
+				},
+				{
+					"id": 104,
+					"name": "execute",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Shell.ts",
+							"line": 47,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Shell.ts#L47"
+						}
+					],
+					"signatures": [
+						{
+							"id": 105,
+							"name": "execute",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Shell.ts",
+									"line": 47,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Shell.ts#L47"
+								}
+							],
+							"parameters": [
+								{
+									"id": 106,
+									"name": "msg",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "Message"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										],
+										"name": "Message",
+										"package": "discord.js"
+									}
+								},
+								{
+									"id": 107,
+									"name": "command",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 108,
+									"name": "author",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "User"
+										},
+										"name": "User",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 12,
+								"name": "JejudoCommand.execute"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 11,
+						"name": "JejudoCommand.execute"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"children": [
+						100
+					]
+				},
+				{
+					"title": "Properties",
+					"children": [
+						109,
+						103,
+						110
+					]
+				},
+				{
+					"title": "Methods",
+					"children": [
+						111,
+						104
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "commands/Shell.ts",
+					"line": 27,
+					"character": 13,
+					"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Shell.ts#L27"
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 1,
+					"name": "JejudoCommand",
+					"package": "jejudo"
+				}
+			]
+		},
+		{
+			"id": 86,
+			"name": "SummaryCommand",
+			"variant": "declaration",
+			"kind": 128,
+			"flags": {},
+			"children": [
+				{
+					"id": 87,
+					"name": "constructor",
+					"variant": "declaration",
+					"kind": 512,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Summary.ts",
+							"line": 16,
+							"character": 2,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Summary.ts#L16"
+						}
+					],
+					"signatures": [
+						{
+							"id": 88,
+							"name": "new SummaryCommand",
+							"variant": "signature",
+							"kind": 16384,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Summary.ts",
+									"line": 16,
+									"character": 2,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Summary.ts#L16"
+								}
+							],
+							"parameters": [
+								{
+									"id": 89,
+									"name": "jejudo",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 17,
+										"name": "Jejudo",
+										"package": "jejudo"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 86,
+								"name": "SummaryCommand",
+								"package": "jejudo"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 3,
+								"name": "JejudoCommand.constructor"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 2,
+						"name": "JejudoCommand.constructor"
+					}
+				},
+				{
+					"id": 94,
+					"name": "data",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 15,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L15"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+							"qualifiedName": "ApplicationCommandSubCommandData"
+						},
+						"name": "ApplicationCommandSubCommandData",
+						"package": "discord.js"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 6,
+						"name": "JejudoCommand.data"
+					}
+				},
+				{
+					"id": 90,
+					"name": "jejudo",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "commands/Summary.ts",
+							"line": 16,
+							"character": 21,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Summary.ts#L16"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": 17,
+						"name": "Jejudo",
+						"package": "jejudo"
+					}
+				},
+				{
+					"id": 95,
+					"name": "textCommandAliases",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 16,
+							"character": 11,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L16"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "string"
+						}
+					},
+					"defaultValue": "[]",
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 7,
+						"name": "JejudoCommand.textCommandAliases"
+					}
+				},
+				{
+					"id": 96,
+					"name": "autocomplete",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "structures/JejudoCommand.ts",
+							"line": 19,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L19"
+						}
+					],
+					"signatures": [
+						{
+							"id": 97,
+							"name": "autocomplete",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "structures/JejudoCommand.ts",
+									"line": 19,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/structures/JejudoCommand.ts#L19"
+								}
+							],
+							"parameters": [
+								{
+									"id": 98,
+									"name": "i",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "AutocompleteInteraction"
+										},
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+													"qualifiedName": "CacheType"
+												},
+												"name": "CacheType",
+												"package": "discord.js"
+											}
+										],
+										"name": "AutocompleteInteraction",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"target": 9,
+								"name": "JejudoCommand.autocomplete"
+							}
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 8,
+						"name": "JejudoCommand.autocomplete"
+					}
+				},
+				{
+					"id": 91,
+					"name": "execute",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "commands/Summary.ts",
+							"line": 24,
+							"character": 8,
+							"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Summary.ts#L24"
+						}
+					],
+					"signatures": [
+						{
+							"id": 92,
+							"name": "execute",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "commands/Summary.ts",
+									"line": 24,
+									"character": 8,
+									"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Summary.ts#L24"
+								}
+							],
+							"parameters": [
+								{
+									"id": 93,
+									"name": "msg",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/discord.js@14.13.0/node_modules/discord.js/typings/index.d.ts",
+											"qualifiedName": "Message"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										],
+										"name": "Message",
+										"package": "discord.js"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.2.2/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							},
+							"overwrites": {
+								"type": "reference",
+								"target": 12,
+								"name": "JejudoCommand.execute"
+							}
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"target": 11,
+						"name": "JejudoCommand.execute"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"children": [
+						87
+					]
+				},
+				{
+					"title": "Properties",
+					"children": [
+						94,
+						90,
+						95
+					]
+				},
+				{
+					"title": "Methods",
+					"children": [
+						96,
+						91
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "commands/Summary.ts",
+					"line": 15,
+					"character": 13,
+					"url": "https://github.com/pikokr/jejudo/blob/33fdc1e/src/commands/Summary.ts#L15"
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 1,
+					"name": "JejudoCommand",
+					"package": "jejudo"
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Classes",
+			"children": [
+				114,
+				70,
+				17,
+				1,
+				99,
+				86
+			]
+		}
+	],
+	"packageName": "jejudo",
+	"readme": [
+		{
+			"kind": "text",
+			"text": "# Jejudo\n\nA debugging tool for discord.js. Inspired by [Dokdo](https://github.com/wonderlandpark/dokdo)"
+		}
+	],
+	"symbolIdMap": {
+		"0": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": ""
+		},
+		"1": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand"
+		},
+		"2": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.__constructor"
+		},
+		"3": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand"
+		},
+		"4": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "data"
+		},
+		"5": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "textCommandAliases"
+		},
+		"6": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.data"
+		},
+		"7": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.textCommandAliases"
+		},
+		"8": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.autocomplete"
+		},
+		"9": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.autocomplete"
+		},
+		"10": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "i"
+		},
+		"11": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.execute"
+		},
+		"12": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.execute"
+		},
+		"13": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "msg"
+		},
+		"14": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "args"
+		},
+		"15": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "author"
+		},
+		"16": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "reference"
+		},
+		"17": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo"
+		},
+		"18": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.__constructor"
+		},
+		"19": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo"
+		},
+		"20": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "client"
+		},
+		"21": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__1"
+		},
+		"22": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"23": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.owners"
+		},
+		"24": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.prefix"
+		},
+		"25": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.textCommand"
+		},
+		"26": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.command"
+		},
+		"27": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.noPermission"
+		},
+		"28": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"29": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"30": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "i"
+		},
+		"31": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.isOwner"
+		},
+		"32": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"33": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"34": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "user"
+		},
+		"35": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.globalVariables"
+		},
+		"36": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.secrets"
+		},
+		"37": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type.registerDefaultCommands"
+		},
+		"38": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo._commands"
+		},
+		"39": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.documentationSources"
+		},
+		"40": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.defaultDocsSource"
+		},
+		"41": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.defaultMemberPermissions"
+		},
+		"42": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.commandName"
+		},
+		"43": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.owners"
+		},
+		"44": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.noPermission"
+		},
+		"45": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"46": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"47": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "i"
+		},
+		"48": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.isOwner"
+		},
+		"49": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"50": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "__type"
+		},
+		"51": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "user"
+		},
+		"52": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.prefix"
+		},
+		"53": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.textCommandName"
+		},
+		"54": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.secrets"
+		},
+		"55": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.client"
+		},
+		"56": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.registerCommand"
+		},
+		"57": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.registerCommand"
+		},
+		"58": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "command"
+		},
+		"59": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.commandJSON"
+		},
+		"60": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.commandJSON"
+		},
+		"61": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.addDocumentationSource"
+		},
+		"62": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.addDocumentationSource"
+		},
+		"63": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "source"
+		},
+		"64": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.handleMessage"
+		},
+		"65": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.handleMessage"
+		},
+		"66": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "msg"
+		},
+		"67": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.handleInteraction"
+		},
+		"68": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "Jejudo.handleInteraction"
+		},
+		"69": {
+			"sourceFileName": "src/structures/Jejudo.ts",
+			"qualifiedName": "i"
+		},
+		"70": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "EvaluateCommand"
+		},
+		"71": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "EvaluateCommand.__constructor"
+		},
+		"72": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "EvaluateCommand"
+		},
+		"73": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "jejudo"
+		},
+		"74": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "EvaluateCommand.jejudo"
+		},
+		"75": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "EvaluateCommand.execute"
+		},
+		"76": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "EvaluateCommand.execute"
+		},
+		"77": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "m"
+		},
+		"78": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "code"
+		},
+		"79": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "author"
+		},
+		"80": {
+			"sourceFileName": "src/commands/Evaluate.ts",
+			"qualifiedName": "reference"
+		},
+		"81": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.data"
+		},
+		"82": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.textCommandAliases"
+		},
+		"83": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.autocomplete"
+		},
+		"84": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.autocomplete"
+		},
+		"85": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "i"
+		},
+		"86": {
+			"sourceFileName": "src/commands/Summary.ts",
+			"qualifiedName": "SummaryCommand"
+		},
+		"87": {
+			"sourceFileName": "src/commands/Summary.ts",
+			"qualifiedName": "SummaryCommand.__constructor"
+		},
+		"88": {
+			"sourceFileName": "src/commands/Summary.ts",
+			"qualifiedName": "SummaryCommand"
+		},
+		"89": {
+			"sourceFileName": "src/commands/Summary.ts",
+			"qualifiedName": "jejudo"
+		},
+		"90": {
+			"sourceFileName": "src/commands/Summary.ts",
+			"qualifiedName": "SummaryCommand.jejudo"
+		},
+		"91": {
+			"sourceFileName": "src/commands/Summary.ts",
+			"qualifiedName": "SummaryCommand.execute"
+		},
+		"92": {
+			"sourceFileName": "src/commands/Summary.ts",
+			"qualifiedName": "SummaryCommand.execute"
+		},
+		"93": {
+			"sourceFileName": "src/commands/Summary.ts",
+			"qualifiedName": "msg"
+		},
+		"94": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.data"
+		},
+		"95": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.textCommandAliases"
+		},
+		"96": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.autocomplete"
+		},
+		"97": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.autocomplete"
+		},
+		"98": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "i"
+		},
+		"99": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "ShellCommand"
+		},
+		"100": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "ShellCommand.__constructor"
+		},
+		"101": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "ShellCommand"
+		},
+		"102": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "jejudo"
+		},
+		"103": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "ShellCommand.jejudo"
+		},
+		"104": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "ShellCommand.execute"
+		},
+		"105": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "ShellCommand.execute"
+		},
+		"106": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "msg"
+		},
+		"107": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "command"
+		},
+		"108": {
+			"sourceFileName": "src/commands/Shell.ts",
+			"qualifiedName": "author"
+		},
+		"109": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.data"
+		},
+		"110": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.textCommandAliases"
+		},
+		"111": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.autocomplete"
+		},
+		"112": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.autocomplete"
+		},
+		"113": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "i"
+		},
+		"114": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "DocsCommand"
+		},
+		"115": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "DocsCommand.__constructor"
+		},
+		"116": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "DocsCommand"
+		},
+		"117": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "jejudo"
+		},
+		"118": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "DocsCommand.jejudo"
+		},
+		"119": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "DocsCommand.autocomplete"
+		},
+		"120": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "DocsCommand.autocomplete"
+		},
+		"121": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "i"
+		},
+		"122": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "DocsCommand.execute"
+		},
+		"123": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "DocsCommand.execute"
+		},
+		"124": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "msg"
+		},
+		"125": {
+			"sourceFileName": "src/commands/Docs.ts",
+			"qualifiedName": "args"
+		},
+		"126": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.data"
+		},
+		"127": {
+			"sourceFileName": "src/structures/JejudoCommand.ts",
+			"qualifiedName": "JejudoCommand.textCommandAliases"
+		}
+	}
+}
