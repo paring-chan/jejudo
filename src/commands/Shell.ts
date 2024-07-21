@@ -66,6 +66,7 @@ export class ShellCommand extends JejudoCommand {
     const term = new Terminal({
       rows: 24,
       cols: 80,
+      allowProposedApi: true,
     })
 
     let shouldUpdate = false
