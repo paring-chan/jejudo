@@ -14,6 +14,6 @@ jobs:
           node-version: 20
       - run: corepack enable
       - run: pnpm i
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
