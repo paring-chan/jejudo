@@ -177,7 +177,7 @@ export class Jejudo {
     command.execute(
       m,
       split.join(' '),
-      (payload) => msg.edit(payload),
+      (payload) => m.edit(payload),
       msg.author,
       msg,
     )
