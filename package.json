@@ -1,6 +1,6 @@
 {
   "name": "jejudo",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "main": "dist/api.js",
   "types": "dist/api.d.ts",
   "author": "파링 <parangee9706@gmail.com>",
