@@ -225,7 +225,7 @@ export class Jejudo {
         args += ` --${item.name} ${JSON.stringify(item.value)}`
       }
 
-      const msg = await i.reply({ content: 'Preparing...', fetchReply: true })
+      const msg = await i.deferReply({ fetchReply: true })
 
       await command.execute(
         msg,
