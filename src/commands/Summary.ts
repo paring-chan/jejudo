@@ -2,7 +2,7 @@
  * Copyright (c) 2022 pikokr. Licensed under the MIT license
  */
 
-import { Jejudo, JejudoCommand } from '../structures'
+import { Jejudo, JejudoCommand, UpdateMessageFn } from '../structures'
 import {
   ApplicationCommandOptionType,
   Message,
@@ -21,16 +21,20 @@ export class SummaryCommand extends JejudoCommand {
     })
   }
 
-  async execute(msg: Message): Promise<void> {
+  async execute(
+    msg: Message,
+    _args: unknown,
+    update: UpdateMessageFn,
+  ): Promise<void> {
     let content = dedent`Jejudo ${inlineCode(version)}, discord.js ${inlineCode(
-      DJSVersion
+      DJSVersion,
     )}, Node.js ${inlineCode(process.versions.node)} on ${process.platform}
         Process started at ${time(
           new Date(Date.now() - process.uptime() * 1000),
-          'R'
+          'R',
         )}, bot was ready at ${time(this.jejudo.client.readyAt as Date, 'R')}`
     content += `\nUsing ${(process.memoryUsage().rss / 1024 / 1024).toFixed(
-      2
+      2,
     )}MB of memory`
     content += `\nRunning on PID ${process.pid}`
     if (this.jejudo.client.shard) {
@@ -45,6 +49,6 @@ export class SummaryCommand extends JejudoCommand {
       content += `\n\nThis bot is not sharded and can see ${this.jejudo.client.guilds.cache.size} guild(s) and ${this.jejudo.client.users.cache.size} user(s).`
     }
     content += `\nAverage websocket latency: ${this.jejudo.client.ws.ping}ms`
-    await msg.edit(content)
+    await update({ content })
   }
 }

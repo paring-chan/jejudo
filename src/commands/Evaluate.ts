@@ -2,7 +2,7 @@
  * Copyright (c) 2022 pikokr. Licensed under the MIT license
  */
 
-import { Jejudo, JejudoCommand } from '../structures'
+import { Jejudo, JejudoCommand, UpdateMessageFn } from '../structures'
 import {
   ApplicationCommandOptionType,
   ButtonBuilder,
@@ -38,7 +38,7 @@ const splitMessage = (
     char?: string | RegExp | (string | RegExp)[]
     prepend?: string
     append?: string
-  } = {}
+  } = {},
 ) => {
   text = verifyString(text)
   if (text.length <= maxLength) return [text]
@@ -90,17 +90,18 @@ export class EvaluateCommand extends JejudoCommand {
           },
         ],
       },
-      ['js']
+      ['js'],
     )
   }
   async execute(
     m: Message,
     code: string,
+    update: UpdateMessageFn,
     author: User,
-    reference: Message | ChatInputCommandInteraction
+    reference: Message | ChatInputCommandInteraction,
   ): Promise<void> {
     if (!code) {
-      await m.edit('code is missing')
+      await update({ content: 'code is missing' })
       return
     }
 
@@ -150,7 +151,7 @@ export class EvaluateCommand extends JejudoCommand {
       })
 
       if (typeof result === 'string' && chunks.length === 1) {
-        await r.edit({ content: lines.join('\n') })
+        await update({ content: lines.join('\n') })
         return
       }
 
@@ -179,7 +180,7 @@ export class EvaluateCommand extends JejudoCommand {
 
       let currentPage = 1
 
-      const update = (stop = false, i?: ButtonInteraction) => {
+      const iterate = (stop = false, i?: ButtonInteraction) => {
         const payload = {
           components:
             chunks.length > 1
@@ -191,8 +192,8 @@ export class EvaluateCommand extends JejudoCommand {
                           x.setDisabled(true)
                         }
                         return x
-                      }
-                    )
+                      },
+                    ),
                   ),
                 ]
               : [],
@@ -202,10 +203,10 @@ export class EvaluateCommand extends JejudoCommand {
         if (i) {
           return i.update(payload)
         } else {
-          return r.edit(payload)
+          return update(payload)
         }
       }
-      await update()
+      await iterate()
 
       if (chunks.length > 1) {
         const collector = channel.createMessageComponentCollector({
@@ -224,8 +225,8 @@ export class EvaluateCommand extends JejudoCommand {
                 .setCustomId('page')
                 .setLabel('Page')
                 .setStyle(TextInputStyle.Short)
-                .setRequired(true)
-            )
+                .setRequired(true),
+            ),
           )
 
         const modalCollector = new InteractionCollector(channel.client, {
@@ -260,7 +261,7 @@ export class EvaluateCommand extends JejudoCommand {
           // @ts-ignore
           await j.deferUpdate()
 
-          await update()
+          await iterate()
         })
 
         collector.on('collect', async (i) => {
@@ -268,12 +269,12 @@ export class EvaluateCommand extends JejudoCommand {
             case 'jejudo_nextPage':
               if (currentPage === chunks.length) return
               currentPage += 1
-              await update(false, i)
+              await iterate(false, i)
               break
             case 'jejudo_prevPage':
               if (currentPage === 1) return
               currentPage -= 1
-              await update(false, i)
+              await iterate(false, i)
               break
             case 'jejudo_stop':
               await i.deferUpdate()
@@ -284,11 +285,11 @@ export class EvaluateCommand extends JejudoCommand {
           }
         })
         collector.on('end', async () => {
-          await update(true)
+          await iterate(true)
         })
       }
     } catch (e) {
-      await r.edit(`Error\n${codeBlock('js', `${e}`)}`)
+      await update({ content: `Error\n${codeBlock('js', `${e}`)}` })
     }
   }
 }

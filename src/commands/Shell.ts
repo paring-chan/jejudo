@@ -2,7 +2,7 @@
  * Copyright (c) 2022 pikokr. Licensed under the MIT license
  */
 
-import { Jejudo, JejudoCommand } from '../structures'
+import { Jejudo, JejudoCommand, UpdateMessageFn } from '../structures'
 import {
   ActionRowBuilder,
   ButtonBuilder,
@@ -40,17 +40,22 @@ export class ShellCommand extends JejudoCommand {
           },
         ],
       },
-      ['sh']
+      ['sh'],
     )
   }
 
-  async execute(msg: Message, command: string, author: User): Promise<void> {
+  async execute(
+    msg: Message,
+    command: string,
+    update: UpdateMessageFn,
+    author: User,
+  ): Promise<void> {
     const r = msg
     const channel = msg.channel
     const shell =
       process.env.SHELL || (process.platform === 'win32' ? 'cmd.exe' : null)
     if (!shell) {
-      await r.edit('environment variable `SHELL` not found.')
+      await update({ content: 'environment variable `SHELL` not found.' })
       return
     }
     const separator = process.platform === 'win32' ? '\r\n' : '\n'
@@ -103,11 +108,11 @@ export class ShellCommand extends JejudoCommand {
         .setLabel('Send input'),
     ]
 
-    await r.edit({
+    await update({
       content: codeBlock(getContent()),
       components: [
         new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
-          ...buttons
+          ...buttons,
         ),
       ],
     })
@@ -115,7 +120,7 @@ export class ShellCommand extends JejudoCommand {
     const interval = setInterval(async () => {
       if (shouldUpdate) {
         shouldUpdate = false
-        await r.edit(codeBlock(getContent()))
+        await update({ content: codeBlock(getContent()) })
       }
     }, 1000)
 
@@ -130,8 +135,8 @@ export class ShellCommand extends JejudoCommand {
             .setCustomId('input')
             .setLabel('Line to send')
             .setStyle(TextInputStyle.Short)
-            .setRequired(true)
-        )
+            .setRequired(true),
+        ),
       )
 
     const buttonCollector = channel.createMessageComponentCollector({
@@ -180,10 +185,10 @@ export class ShellCommand extends JejudoCommand {
 
       console.log(`killed ${pty.pid}`)
 
-      await r.edit({
+      await update({
         components: [
           new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
-            ...buttons.map((x) => x.setDisabled(true))
+            ...buttons.map((x) => x.setDisabled(true)),
           ),
         ],
         content: codeBlock(getContent()),

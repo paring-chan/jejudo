@@ -6,14 +6,21 @@ import {
   ApplicationCommandSubCommandData,
   AutocompleteInteraction,
   ChatInputCommandInteraction,
+  InteractionEditReplyOptions,
   Message,
+  MessageEditOptions,
+  MessagePayload,
   User,
 } from 'discord.js'
+
+export type UpdateMessageFn = (
+  payload: InteractionEditReplyOptions | MessageEditOptions,
+) => Promise<unknown>
 
 export abstract class JejudoCommand {
   protected constructor(
     public data: ApplicationCommandSubCommandData,
-    public textCommandAliases: string[] = []
+    public textCommandAliases: string[] = [],
   ) {}
 
   async autocomplete(i: AutocompleteInteraction) {
@@ -23,7 +30,8 @@ export abstract class JejudoCommand {
   abstract execute(
     msg: Message,
     args: string,
+    updateReference: UpdateMessageFn,
     author: User,
-    reference: Message | ChatInputCommandInteraction
+    reference: Message | ChatInputCommandInteraction,
   ): Promise<void>
 }

@@ -71,7 +71,7 @@ export class Jejudo {
       globalVariables?: Record<string, object>
       secrets?: string[]
       registerDefaultCommands?: boolean
-    }
+    },
   ) {
     this.owners = owners
     this.commandName = command
@@ -161,7 +161,7 @@ export class Jejudo {
     const command = this._commands.find(
       (x) =>
         x.data.name === commandName ||
-        x.textCommandAliases.includes(commandName)
+        x.textCommandAliases.includes(commandName),
     )
 
     if (!command) return
@@ -174,7 +174,13 @@ export class Jejudo {
 
     const m = await msg.reply('Preparing...')
 
-    command.execute(m, split.join(' '), msg.author, msg)
+    command.execute(
+      m,
+      split.join(' '),
+      (payload) => msg.edit(payload),
+      msg.author,
+      msg,
+    )
   }
 
   async handleInteraction(i: Interaction) {
@@ -221,7 +227,13 @@ export class Jejudo {
 
       const msg = await i.reply({ content: 'Preparing...', fetchReply: true })
 
-      await command.execute(msg, args, i.user, i)
+      await command.execute(
+        msg,
+        args,
+        (payload) => i.editReply(payload),
+        i.user,
+        i,
+      )
     } catch (e) {
       if (!i.replied) {
         await i.deleteReply().catch((e) => console.error(e))

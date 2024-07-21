@@ -2,12 +2,15 @@
  * Copyright (c) 2022 pikokr. Licensed under the MIT license
  */
 
-import { Jejudo, JejudoCommand } from '../structures'
+import { Jejudo, JejudoCommand, UpdateMessageFn } from '../structures'
 import {
   ApplicationCommandOptionType,
   AutocompleteInteraction,
+  ChatInputCommandInteraction,
   EmbedBuilder,
   Message,
+  MessagePayload,
+  User,
 } from 'discord.js'
 import Doc from 'discord.js-docs'
 import yargs from 'yargs'
@@ -46,7 +49,7 @@ export class DocsCommand extends JejudoCommand {
       const source = this.jejudo.documentationSources.find(
         (x) =>
           x.key ===
-          (i.options.getString('source') ?? this.jejudo.defaultDocsSource)
+          (i.options.getString('source') ?? this.jejudo.defaultDocsSource),
       )
       if (!source) return i.respond([])
 
@@ -58,28 +61,32 @@ export class DocsCommand extends JejudoCommand {
 
       await i.respond(
         Array.from(
-          new Set((searchResults as { name: string }[]).map((x) => x.name))
+          new Set((searchResults as { name: string }[]).map((x) => x.name)),
         ).map((x) => ({
           name: x,
           value: x,
-        }))
+        })),
       )
     }
   }
 
-  async execute(msg: Message, args: string): Promise<void> {
+  async execute(
+    msg: Message,
+    args: string,
+    update: UpdateMessageFn,
+  ): Promise<void> {
     const parsedArgs = await yargs.parseAsync(args)
 
     if (!parsedArgs._.length) {
-      await msg.edit('Keyword is missing')
+      await update({ content: 'Keyword is missing' })
       return
     }
 
     const source = this.jejudo.documentationSources.find(
-      (x) => x.key === (parsedArgs.source ?? this.jejudo.defaultDocsSource)
+      (x) => x.key === (parsedArgs.source ?? this.jejudo.defaultDocsSource),
     )
     if (!source) {
-      await msg.edit('Unknown documentation source')
+      await update({ content: 'Unknown documentation source' })
       return
     }
 
@@ -88,7 +95,7 @@ export class DocsCommand extends JejudoCommand {
     const embed = await doc.resolveEmbed(parsedArgs._.join(' '))
 
     if (!embed) {
-      await msg.edit({ content: 'No search results found' })
+      await update({ content: 'No search results found' })
       return
     }
 
@@ -99,7 +106,7 @@ export class DocsCommand extends JejudoCommand {
       }
     })
 
-    await msg.edit({
+    await update({
       embeds: [e],
     })
   }
