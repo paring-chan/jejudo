@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 20
       - run: corepack enable
-      - run: yarn
+      - run: pnpm i
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
