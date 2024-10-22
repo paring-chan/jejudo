@@ -25,7 +25,7 @@
     "@commitlint/config-conventional": "19.2.2",
     "@discordjs/builders": "^1.8.2",
     "@discordjs/ts-docgen": "0.4.1",
-    "@swc/core": "1.7.0",
+    "@swc/core": "1.7.39",
     "@types/dedent": "0.7.2",
     "@types/lodash": "4.17.7",
     "@types/node": "20.14.11",
