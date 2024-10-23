@@ -28,7 +28,7 @@
     "@swc/core": "1.7.0",
     "@types/dedent": "0.7.2",
     "@types/lodash": "4.17.7",
-    "@types/node": "20.14.11",
+    "@types/node": "20.17.0",
     "@types/yargs": "17.0.32",
     "discord.js": "14.15.3",
     "eslint-config-prettier": "9.1.0",
