@@ -27,7 +27,7 @@
     "@discordjs/ts-docgen": "0.4.1",
     "@swc/core": "1.7.0",
     "@types/dedent": "0.7.2",
-    "@types/lodash": "4.17.7",
+    "@types/lodash": "4.17.25",
     "@types/node": "20.14.11",
     "@types/yargs": "17.0.32",
     "discord.js": "14.15.3",
